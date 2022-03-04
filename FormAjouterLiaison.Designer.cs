@@ -33,6 +33,11 @@ namespace WindowsFormsProjectAtlantik
             this.lblSecteur = new System.Windows.Forms.Label();
             this.lblDepart = new System.Windows.Forms.Label();
             this.cmbDepart = new System.Windows.Forms.ComboBox();
+            this.cmbArrivee = new System.Windows.Forms.ComboBox();
+            this.lblArriee = new System.Windows.Forms.Label();
+            this.tbxDistance = new System.Windows.Forms.TextBox();
+            this.lblDistance = new System.Windows.Forms.Label();
+            this.btnAjouterLiaison = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbxSecteur
@@ -73,11 +78,63 @@ namespace WindowsFormsProjectAtlantik
             this.cmbDepart.TabIndex = 3;
             this.cmbDepart.SelectedIndexChanged += new System.EventHandler(this.cmbDepart_SelectedIndexChanged);
             // 
+            // cmbArrivee
+            // 
+            this.cmbArrivee.FormattingEnabled = true;
+            this.cmbArrivee.Location = new System.Drawing.Point(181, 99);
+            this.cmbArrivee.Name = "cmbArrivee";
+            this.cmbArrivee.Size = new System.Drawing.Size(121, 21);
+            this.cmbArrivee.TabIndex = 5;
+            this.cmbArrivee.SelectedIndexChanged += new System.EventHandler(this.cmbArrivee_SelectedIndexChanged);
+            // 
+            // lblArriee
+            // 
+            this.lblArriee.AutoSize = true;
+            this.lblArriee.Location = new System.Drawing.Point(178, 74);
+            this.lblArriee.Name = "lblArriee";
+            this.lblArriee.Size = new System.Drawing.Size(46, 13);
+            this.lblArriee.TabIndex = 4;
+            this.lblArriee.Text = "Arrivée :";
+            this.lblArriee.Click += new System.EventHandler(this.lblArriee_Click);
+            // 
+            // tbxDistance
+            // 
+            this.tbxDistance.Location = new System.Drawing.Point(181, 169);
+            this.tbxDistance.Name = "tbxDistance";
+            this.tbxDistance.Size = new System.Drawing.Size(121, 20);
+            this.tbxDistance.TabIndex = 6;
+            this.tbxDistance.TextChanged += new System.EventHandler(this.tbxDistance_TextChanged);
+            // 
+            // lblDistance
+            // 
+            this.lblDistance.AutoSize = true;
+            this.lblDistance.Location = new System.Drawing.Point(178, 143);
+            this.lblDistance.Name = "lblDistance";
+            this.lblDistance.Size = new System.Drawing.Size(55, 13);
+            this.lblDistance.TabIndex = 7;
+            this.lblDistance.Text = "Distance :";
+            this.lblDistance.Click += new System.EventHandler(this.lblDistance_Click);
+            // 
+            // btnAjouterLiaison
+            // 
+            this.btnAjouterLiaison.Location = new System.Drawing.Point(181, 214);
+            this.btnAjouterLiaison.Name = "btnAjouterLiaison";
+            this.btnAjouterLiaison.Size = new System.Drawing.Size(121, 23);
+            this.btnAjouterLiaison.TabIndex = 8;
+            this.btnAjouterLiaison.Text = "Ajouter";
+            this.btnAjouterLiaison.UseVisualStyleBackColor = true;
+            this.btnAjouterLiaison.Click += new System.EventHandler(this.btnAjouterLiaison_Click);
+            // 
             // FormAjouterLiaison
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 251);
+            this.ClientSize = new System.Drawing.Size(389, 251);
+            this.Controls.Add(this.btnAjouterLiaison);
+            this.Controls.Add(this.lblDistance);
+            this.Controls.Add(this.tbxDistance);
+            this.Controls.Add(this.cmbArrivee);
+            this.Controls.Add(this.lblArriee);
             this.Controls.Add(this.cmbDepart);
             this.Controls.Add(this.lblDepart);
             this.Controls.Add(this.lblSecteur);
@@ -96,5 +153,10 @@ namespace WindowsFormsProjectAtlantik
         private System.Windows.Forms.Label lblSecteur;
         private System.Windows.Forms.Label lblDepart;
         private System.Windows.Forms.ComboBox cmbDepart;
+        private System.Windows.Forms.ComboBox cmbArrivee;
+        private System.Windows.Forms.Label lblArriee;
+        private System.Windows.Forms.TextBox tbxDistance;
+        private System.Windows.Forms.Label lblDistance;
+        private System.Windows.Forms.Button btnAjouterLiaison;
     }
 }

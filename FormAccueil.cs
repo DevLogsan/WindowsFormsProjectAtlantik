@@ -59,7 +59,8 @@ namespace WindowsFormsProjectAtlantik
         // Ajouter un bateau
         private void miBateau_Click(object sender, EventArgs e)
         {
-
+            FormAjouterBateau formAjouterBateau = new FormAjouterBateau();
+            formAjouterBateau.ShowDialog();
         }
         // ----- EDITION -----
         private void mmEdition_Click(object sender, EventArgs e)
@@ -69,7 +70,8 @@ namespace WindowsFormsProjectAtlantik
         // Modifier un bateau
         private void miModifierBateau_Click(object sender, EventArgs e)
         {
-
+            FormModifierBateau formModifierBateau = new FormModifierBateau();
+            formModifierBateau.ShowDialog();
         }
         // Modifier les paramètres du site
         private void miModifierParametres_Click(object sender, EventArgs e)
@@ -79,7 +81,7 @@ namespace WindowsFormsProjectAtlantik
         // ----- AFFICHAGE -----
         private void mmAffichage_Click(object sender, EventArgs e)
         {
-
+            
         }
         // Afficher une traversée
         private void miAfficherTraversee_Click(object sender, EventArgs e)

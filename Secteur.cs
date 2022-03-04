@@ -17,7 +17,7 @@ namespace WindowsFormsProjectAtlantik
             this.nom = nom;
         }
 
-        public int GetNumero()
+        public int GetSecteur()
         {
             return nosecteur;
         }
