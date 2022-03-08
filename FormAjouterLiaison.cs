@@ -38,7 +38,6 @@ namespace WindowsFormsProjectAtlantik
                     Secteur monSecteur = new Secteur(jeuEnr.GetInt32("nosecteur"), jeuEnr.GetString("nom"));
                     lbxSecteur.Items.Add(monSecteur);
                 }
-
             }
             catch (MySqlException erreur)
             {
@@ -50,7 +49,6 @@ namespace WindowsFormsProjectAtlantik
                 {
                     maConnexion.Close();
                 }
-
             }
 
             // Affiche les départs

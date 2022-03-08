@@ -33,7 +33,6 @@ namespace WindowsFormsProjectAtlantik
             this.tbxNomBateau = new System.Windows.Forms.TextBox();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.gbxGroupe = new System.Windows.Forms.GroupBox();
-            this.msAccueil = new System.Windows.Forms.MenuStrip();
             this.mmAjout = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterSecteur = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterPort = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +46,6 @@ namespace WindowsFormsProjectAtlantik
             this.miAfficherTraversee = new System.Windows.Forms.ToolStripMenuItem();
             this.miAfficherTraverseeLiaison = new System.Windows.Forms.ToolStripMenuItem();
             this.miAfficherDetailReservation = new System.Windows.Forms.ToolStripMenuItem();
-            this.msAccueil.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNomBateau
@@ -88,21 +86,83 @@ namespace WindowsFormsProjectAtlantik
             this.gbxGroupe.Text = "Capacités Maximales";
             this.gbxGroupe.Enter += new System.EventHandler(this.gbxGroupe_Enter);
             // 
+            // mmAjout
+            // 
+            this.mmAjout.Name = "mmAjout";
+            this.mmAjout.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miAjouterSecteur
+            // 
+            this.miAjouterSecteur.Name = "miAjouterSecteur";
+            this.miAjouterSecteur.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miAjouterPort
+            // 
+            this.miAjouterPort.Name = "miAjouterPort";
+            this.miAjouterPort.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miAjouterLiaison
+            // 
+            this.miAjouterLiaison.Name = "miAjouterLiaison";
+            this.miAjouterLiaison.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miBateau
+            // 
+            this.miBateau.Name = "miBateau";
+            this.miBateau.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miAjouterTarif
+            // 
+            this.miAjouterTarif.Name = "miAjouterTarif";
+            this.miAjouterTarif.Size = new System.Drawing.Size(32, 19);
+            // 
+            // mmEdition
+            // 
+            this.mmEdition.Name = "mmEdition";
+            this.mmEdition.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miModifierBateau
+            // 
+            this.miModifierBateau.Name = "miModifierBateau";
+            this.miModifierBateau.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miModifierParametres
+            // 
+            this.miModifierParametres.Name = "miModifierParametres";
+            this.miModifierParametres.Size = new System.Drawing.Size(32, 19);
+            // 
+            // mmAffichage
+            // 
+            this.mmAffichage.Name = "mmAffichage";
+            this.mmAffichage.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miAfficherTraversee
+            // 
+            this.miAfficherTraversee.Name = "miAfficherTraversee";
+            this.miAfficherTraversee.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miAfficherTraverseeLiaison
+            // 
+            this.miAfficherTraverseeLiaison.Name = "miAfficherTraverseeLiaison";
+            this.miAfficherTraverseeLiaison.Size = new System.Drawing.Size(32, 19);
+            // 
+            // miAfficherDetailReservation
+            // 
+            this.miAfficherDetailReservation.Name = "miAfficherDetailReservation";
+            this.miAfficherDetailReservation.Size = new System.Drawing.Size(32, 19);
+            // 
             // FormAjouterBateau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 287);
-            this.Controls.Add(this.msAccueil);
             this.Controls.Add(this.gbxGroupe);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.tbxNomBateau);
             this.Controls.Add(this.lblNomBateau);
             this.Name = "FormAjouterBateau";
-            this.Text = "FormAjouterBateau";
+            this.Text = "Ajouter un bateau";
             this.Load += new System.EventHandler(this.FormAjouterBateau_Load);
-            this.msAccueil.ResumeLayout(false);
-            this.msAccueil.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,7 +174,6 @@ namespace WindowsFormsProjectAtlantik
         private System.Windows.Forms.TextBox tbxNomBateau;
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.GroupBox gbxGroupe;
-        private System.Windows.Forms.MenuStrip msAccueil;
         private System.Windows.Forms.ToolStripMenuItem mmAjout;
         private System.Windows.Forms.ToolStripMenuItem miAjouterSecteur;
         private System.Windows.Forms.ToolStripMenuItem miAjouterPort;
