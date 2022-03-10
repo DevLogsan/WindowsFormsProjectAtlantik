@@ -127,6 +127,13 @@
     <Compile Include="FormModifierBateau.Designer.cs">
       <DependentUpon>FormModifierBateau.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAjouterTraversee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAjouterTraversee.Designer.cs">
+      <DependentUpon>FormAjouterTraversee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liaison.cs" />
     <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjouterSecteur.resx">
       <DependentUpon>FormAjouterSecteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAjouterTraversee.resx">
+      <DependentUpon>FormAjouterTraversee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormModifierBateau.resx">
       <DependentUpon>FormModifierBateau.cs</DependentUpon>

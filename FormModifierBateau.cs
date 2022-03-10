@@ -107,12 +107,10 @@ namespace WindowsFormsProjectAtlantik
                 }
                     maConnexion.Open();
 
-                string modification;
-                modification = "SELECT capacitemax, lettrecategorie FROM contenir WHERE nobateau = @NOBATEAU";
+                string modification = "SELECT capacitemax, lettrecategorie FROM contenir WHERE nobateau = @NOBATEAU";
                 var maModification = new MySqlCommand(modification, maConnexion);
 
                 maModification.Parameters.AddWithValue("@NOBATEAU", ((Bateau)cmbNomBateau.SelectedItem).GetNumero());
-                
                 
                 MySqlDataReader jeuEnr = maModification.ExecuteReader();
                 while (jeuEnr.Read())

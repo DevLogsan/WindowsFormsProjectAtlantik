@@ -57,10 +57,16 @@ namespace WindowsFormsProjectAtlantik
 
         }
         // Ajouter un bateau
-        private void miBateau_Click(object sender, EventArgs e)
+        private void miAjouterBateau_Click(object sender, EventArgs e)
         {
             FormAjouterBateau formAjouterBateau = new FormAjouterBateau();
             formAjouterBateau.ShowDialog();
+        }
+        // Ajouter une traversée
+        private void MiAjouterTraversee_Click(object sender, EventArgs e)
+        {
+            FormAjouterTraversee formAjouterTraversee = new FormAjouterTraversee();
+            formAjouterTraversee.ShowDialog();
         }
         // ----- EDITION -----
         private void mmEdition_Click(object sender, EventArgs e)

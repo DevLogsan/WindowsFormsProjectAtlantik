@@ -35,7 +35,7 @@ namespace WindowsFormsProjectAtlantik
             this.miAjouterSecteur = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterPort = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterLiaison = new System.Windows.Forms.ToolStripMenuItem();
-            this.miBateau = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAjouterBateau = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterTarif = new System.Windows.Forms.ToolStripMenuItem();
             this.mmEdition = new System.Windows.Forms.ToolStripMenuItem();
             this.miModifierBateau = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +46,7 @@ namespace WindowsFormsProjectAtlantik
             this.miAfficherDetailReservation = new System.Windows.Forms.ToolStripMenuItem();
             this.customInstaller1 = new MySql.Data.MySqlClient.CustomInstaller();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MiAjouterTraversee = new System.Windows.Forms.ToolStripMenuItem();
             this.msAccueil.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@ namespace WindowsFormsProjectAtlantik
             this.msAccueil.Location = new System.Drawing.Point(0, 0);
             this.msAccueil.Name = "msAccueil";
             this.msAccueil.Padding = new System.Windows.Forms.Padding(7, 1, 0, 1);
-            this.msAccueil.Size = new System.Drawing.Size(599, 24);
+            this.msAccueil.Size = new System.Drawing.Size(592, 24);
             this.msAccueil.TabIndex = 0;
             this.msAccueil.Text = "menuStrip1";
             this.msAccueil.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.msAccueil_ItemClicked);
@@ -70,7 +71,8 @@ namespace WindowsFormsProjectAtlantik
             this.miAjouterSecteur,
             this.miAjouterPort,
             this.miAjouterLiaison,
-            this.miBateau,
+            this.miAjouterBateau,
+            this.MiAjouterTraversee,
             this.miAjouterTarif});
             this.mmAjout.ForeColor = System.Drawing.Color.White;
             this.mmAjout.Name = "mmAjout";
@@ -105,14 +107,14 @@ namespace WindowsFormsProjectAtlantik
             this.miAjouterLiaison.Text = "Ajouter une liaison";
             this.miAjouterLiaison.Click += new System.EventHandler(this.miAjouterLiaison_Click);
             // 
-            // miBateau
+            // miAjouterBateau
             // 
-            this.miBateau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.miBateau.ForeColor = System.Drawing.Color.White;
-            this.miBateau.Name = "miBateau";
-            this.miBateau.Size = new System.Drawing.Size(326, 22);
-            this.miBateau.Text = "Ajouter un bateau";
-            this.miBateau.Click += new System.EventHandler(this.miBateau_Click);
+            this.miAjouterBateau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.miAjouterBateau.ForeColor = System.Drawing.Color.White;
+            this.miAjouterBateau.Name = "miAjouterBateau";
+            this.miAjouterBateau.Size = new System.Drawing.Size(326, 22);
+            this.miAjouterBateau.Text = "Ajouter un bateau";
+            this.miAjouterBateau.Click += new System.EventHandler(this.miAjouterBateau_Click);
             // 
             // miAjouterTarif
             // 
@@ -198,13 +200,22 @@ namespace WindowsFormsProjectAtlantik
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // MiAjouterTraversee
+            // 
+            this.MiAjouterTraversee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.MiAjouterTraversee.ForeColor = System.Drawing.Color.White;
+            this.MiAjouterTraversee.Name = "MiAjouterTraversee";
+            this.MiAjouterTraversee.Size = new System.Drawing.Size(326, 22);
+            this.MiAjouterTraversee.Text = "Ajouter une traversée";
+            this.MiAjouterTraversee.Click += new System.EventHandler(this.MiAjouterTraversee_Click);
+            // 
             // FormAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(599, 435);
+            this.ClientSize = new System.Drawing.Size(592, 287);
             this.Controls.Add(this.msAccueil);
             this.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -229,7 +240,7 @@ namespace WindowsFormsProjectAtlantik
         private System.Windows.Forms.ToolStripMenuItem miAjouterPort;
         private System.Windows.Forms.ToolStripMenuItem miAjouterLiaison;
         private System.Windows.Forms.ToolStripMenuItem miAjouterTarif;
-        private System.Windows.Forms.ToolStripMenuItem miBateau;
+        private System.Windows.Forms.ToolStripMenuItem miAjouterBateau;
         private System.Windows.Forms.ToolStripMenuItem mmAffichage;
         private System.Windows.Forms.ToolStripMenuItem mmEdition;
         private System.Windows.Forms.ToolStripMenuItem miModifierBateau;
@@ -239,6 +250,7 @@ namespace WindowsFormsProjectAtlantik
         private System.Windows.Forms.ToolStripMenuItem miAfficherDetailReservation;
         private MySql.Data.MySqlClient.CustomInstaller customInstaller1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem MiAjouterTraversee;
     }
 }
 
