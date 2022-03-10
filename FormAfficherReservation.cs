@@ -52,7 +52,6 @@ namespace WindowsFormsProjectAtlantik
                 }
             }
         }
-
         private void cmbNomPrenom_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
