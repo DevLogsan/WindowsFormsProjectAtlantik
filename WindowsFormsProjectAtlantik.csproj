@@ -91,11 +91,18 @@
   <ItemGroup>
     <Compile Include="Bateau.cs" />
     <Compile Include="Categorie.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="FormAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAccueil.Designer.cs">
       <DependentUpon>FormAccueil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAfficherReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAfficherReservation.Designer.cs">
+      <DependentUpon>FormAfficherReservation.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAjouterBateau.cs">
       <SubType>Form</SubType>
@@ -140,6 +147,9 @@
     <Compile Include="Secteur.cs" />
     <EmbeddedResource Include="FormAccueil.resx">
       <DependentUpon>FormAccueil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAfficherReservation.resx">
+      <DependentUpon>FormAfficherReservation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjouterBateau.resx">
       <DependentUpon>FormAjouterBateau.cs</DependentUpon>

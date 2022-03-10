@@ -102,7 +102,8 @@ namespace WindowsFormsProjectAtlantik
         // Afficher les détails d'une réservation
         private void miAfficherDetailReservation_Click(object sender, EventArgs e)
         {
-
+            FormAfficherReservation formAjouterReservation = new FormAfficherReservation();
+            formAjouterReservation.ShowDialog();
         }
     }
 }

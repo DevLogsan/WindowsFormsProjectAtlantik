@@ -36,6 +36,7 @@ namespace WindowsFormsProjectAtlantik
             this.miAjouterPort = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterLiaison = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterBateau = new System.Windows.Forms.ToolStripMenuItem();
+            this.MiAjouterTraversee = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterTarif = new System.Windows.Forms.ToolStripMenuItem();
             this.mmEdition = new System.Windows.Forms.ToolStripMenuItem();
             this.miModifierBateau = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,6 @@ namespace WindowsFormsProjectAtlantik
             this.miAfficherDetailReservation = new System.Windows.Forms.ToolStripMenuItem();
             this.customInstaller1 = new MySql.Data.MySqlClient.CustomInstaller();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.MiAjouterTraversee = new System.Windows.Forms.ToolStripMenuItem();
             this.msAccueil.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +116,15 @@ namespace WindowsFormsProjectAtlantik
             this.miAjouterBateau.Text = "Ajouter un bateau";
             this.miAjouterBateau.Click += new System.EventHandler(this.miAjouterBateau_Click);
             // 
+            // MiAjouterTraversee
+            // 
+            this.MiAjouterTraversee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.MiAjouterTraversee.ForeColor = System.Drawing.Color.White;
+            this.MiAjouterTraversee.Name = "MiAjouterTraversee";
+            this.MiAjouterTraversee.Size = new System.Drawing.Size(326, 22);
+            this.MiAjouterTraversee.Text = "Ajouter une traversée";
+            this.MiAjouterTraversee.Click += new System.EventHandler(this.MiAjouterTraversee_Click);
+            // 
             // miAjouterTarif
             // 
             this.miAjouterTarif.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -159,8 +168,8 @@ namespace WindowsFormsProjectAtlantik
             this.mmAffichage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.mmAffichage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miAfficherTraversee,
-            this.miAfficherTraverseeLiaison,
-            this.miAfficherDetailReservation});
+            this.miAfficherDetailReservation,
+            this.miAfficherTraverseeLiaison});
             this.mmAffichage.ForeColor = System.Drawing.Color.White;
             this.mmAffichage.Name = "mmAffichage";
             this.mmAffichage.Size = new System.Drawing.Size(70, 22);
@@ -199,15 +208,6 @@ namespace WindowsFormsProjectAtlantik
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // MiAjouterTraversee
-            // 
-            this.MiAjouterTraversee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.MiAjouterTraversee.ForeColor = System.Drawing.Color.White;
-            this.MiAjouterTraversee.Name = "MiAjouterTraversee";
-            this.MiAjouterTraversee.Size = new System.Drawing.Size(326, 22);
-            this.MiAjouterTraversee.Text = "Ajouter une traversée";
-            this.MiAjouterTraversee.Click += new System.EventHandler(this.MiAjouterTraversee_Click);
             // 
             // FormAccueil
             // 
