@@ -136,5 +136,37 @@ namespace WindowsFormsProjectAtlantik
         {
 
         }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string requete;
+                maConnexion.Open();
+
+                requete = "INSERT INTO traversee(noliaison, nobateau, dateheuredepart, dateheurearrivee) VALUES (@NOLIAISON, @NOBATEAU, @DATEHEUREDEPART, @DATEHEUREARRIVEE)";
+                var maTraversee = new MySqlCommand(requete, maConnexion);
+
+                maTraversee.Parameters.AddWithValue("@NOLIAISON", ((Liaison)cmbLiaison.SelectedItem).GetNumero());
+                maTraversee.Parameters.AddWithValue("@NOBATEAU", ((Bateau)cmbBateau.SelectedItem).GetNumero());
+                maTraversee.Parameters.AddWithValue("@DATEHEUREDEPART", dateDepart.Value.ToString("yyyy-MM-dd H:mm:ss"));
+                maTraversee.Parameters.AddWithValue("@DATEHEUREARRIVEE", dateArrivee.Value.ToString("yyyy-MM-dd H:mm:ss"));
+                maTraversee.ExecuteNonQuery();
+
+                maTraversee.Parameters.Clear();
+
+            }
+            catch (MySqlException erreur)
+            {
+                MessageBox.Show("Erreur " + erreur.ToString());
+            }
+            finally
+            {
+                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                {
+                    maConnexion.Close();
+                }
+            }
+        }
     }
 }

@@ -98,11 +98,14 @@ namespace WindowsFormsProjectAtlantik
             // 
             // dateDepart
             // 
+            this.dateDepart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateDepart.Location = new System.Drawing.Point(306, 41);
+            this.dateDepart.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.dateDepart.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dateDepart.Name = "dateDepart";
-            this.dateDepart.Size = new System.Drawing.Size(166, 20);
+            this.dateDepart.Size = new System.Drawing.Size(108, 20);
             this.dateDepart.TabIndex = 8;
-            this.dateDepart.Value = new System.DateTime(2022, 3, 8, 16, 12, 19, 0);
+            this.dateDepart.Value = new System.DateTime(2022, 3, 8, 16, 12, 0, 0);
             this.dateDepart.ValueChanged += new System.EventHandler(this.dateDepart_ValueChanged);
             // 
             // lblDepart
@@ -125,9 +128,12 @@ namespace WindowsFormsProjectAtlantik
             // 
             // dateArrivee
             // 
+            this.dateArrivee.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateArrivee.Location = new System.Drawing.Point(306, 100);
+            this.dateArrivee.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.dateArrivee.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dateArrivee.Name = "dateArrivee";
-            this.dateArrivee.Size = new System.Drawing.Size(166, 20);
+            this.dateArrivee.Size = new System.Drawing.Size(108, 20);
             this.dateArrivee.TabIndex = 10;
             this.dateArrivee.Value = new System.DateTime(2022, 3, 8, 16, 12, 19, 0);
             this.dateArrivee.ValueChanged += new System.EventHandler(this.dateArrivee_ValueChanged);
@@ -140,6 +146,7 @@ namespace WindowsFormsProjectAtlantik
             this.btnAjouter.TabIndex = 12;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // FormAjouterTraversee
             // 
