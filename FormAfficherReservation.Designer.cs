@@ -56,17 +56,18 @@ namespace WindowsFormsProjectAtlantik
             // lvInformation
             // 
             this.lvInformation.HideSelection = false;
-            this.lvInformation.Location = new System.Drawing.Point(15, 171);
+            this.lvInformation.Location = new System.Drawing.Point(15, 187);
             this.lvInformation.Name = "lvInformation";
             this.lvInformation.Size = new System.Drawing.Size(466, 78);
             this.lvInformation.TabIndex = 2;
             this.lvInformation.UseCompatibleStateImageBehavior = false;
+            this.lvInformation.SelectedIndexChanged += new System.EventHandler(this.lvInformation_SelectedIndexChanged);
             // 
             // gbxReservation
             // 
             this.gbxReservation.Location = new System.Drawing.Point(221, 12);
             this.gbxReservation.Name = "gbxReservation";
-            this.gbxReservation.Size = new System.Drawing.Size(260, 143);
+            this.gbxReservation.Size = new System.Drawing.Size(260, 169);
             this.gbxReservation.TabIndex = 3;
             this.gbxReservation.TabStop = false;
             this.gbxReservation.Text = "Réservation";
@@ -75,7 +76,7 @@ namespace WindowsFormsProjectAtlantik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 263);
+            this.ClientSize = new System.Drawing.Size(493, 277);
             this.Controls.Add(this.gbxReservation);
             this.Controls.Add(this.lvInformation);
             this.Controls.Add(this.cmbNomPrenom);

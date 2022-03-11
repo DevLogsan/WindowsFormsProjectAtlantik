@@ -85,8 +85,45 @@ namespace WindowsFormsProjectAtlantik
                     tabItem[3] = jeuEnr["dateheuredepart"].ToString();
 
                     ListViewItem Item = new ListViewItem(tabItem);
-
                     lvInformation.Items.Add(Item);
+                }
+            }
+            catch (MySqlException erreur)
+            {
+                MessageBox.Show("Erreur " + erreur.ToString());
+            }
+            finally
+            {
+                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                {
+                    maConnexion.Close();
+                }
+            }
+        }
+
+        private void lvInformation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string requete;
+                maConnexion.Open();
+                int i = 1;
+
+                requete = "SELECT libelle, quantite FROM type t, enregistrer e WHERE t.lettrecategorie = e.lettrecategorie AND t.notype = e.notype AND e.noreservation = @NORESERVATION";
+                var maCommande = new MySqlCommand(requete, maConnexion);
+                maCommande.Parameters.AddWithValue("@NORESERVATION", int.Parse(lvInformation.SelectedItems[0].Text));
+
+                MySqlDataReader jeuEnr = maCommande.ExecuteReader();
+                while (jeuEnr.Read())
+                {
+                    Reservation monType = new Reservation(jeuEnr["libelle"].ToString(), int.Parse(jeuEnr["quantite"].ToString()));
+                    Label lbl = new Label();
+                    lbl.Text = monType.ToString();
+                    lbl.Location = new Point(5, i * 25);
+
+                    gbxReservation.Controls.Add(lbl);
+                    i++;
                 }
             }
             catch (MySqlException erreur)
