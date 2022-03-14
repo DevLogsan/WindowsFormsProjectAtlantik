@@ -54,7 +54,8 @@ namespace WindowsFormsProjectAtlantik
         // Ajouter un tarif pour une liaison et une période
         private void miAjouterTarif_Click(object sender, EventArgs e)
         {
-
+            FormAjouterTarif formAjouterTarif = new FormAjouterTarif();
+            formAjouterTarif.ShowDialog();
         }
         // Ajouter un bateau
         private void miAjouterBateau_Click(object sender, EventArgs e)
@@ -97,7 +98,8 @@ namespace WindowsFormsProjectAtlantik
         // Afficher les traversée pour une liaison et les places restantes par catégorie
         private void miAfficherTraverseeLiaison_Click(object sender, EventArgs e)
         {
-
+            FormAfficherTraversee formAfficherTraversee = new FormAfficherTraversee();
+            formAfficherTraversee.ShowDialog();
         }
         // Afficher les détails d'une réservation
         private void miAfficherDetailReservation_Click(object sender, EventArgs e)

@@ -104,6 +104,12 @@
     <Compile Include="FormAfficherReservation.Designer.cs">
       <DependentUpon>FormAfficherReservation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAfficherTraversee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAfficherTraversee.Designer.cs">
+      <DependentUpon>FormAfficherTraversee.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAjouterBateau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,12 @@
     <Compile Include="FormAjouterSecteur.Designer.cs">
       <DependentUpon>FormAjouterSecteur.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAjouterTarif.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAjouterTarif.Designer.cs">
+      <DependentUpon>FormAjouterTarif.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormModifierBateau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,16 +153,21 @@
       <DependentUpon>FormAjouterTraversee.cs</DependentUpon>
     </Compile>
     <Compile Include="Liaison.cs" />
+    <Compile Include="Periode.cs" />
     <Compile Include="Port.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Secteur.cs" />
     <Compile Include="Reservation.cs" />
+    <Compile Include="Tarif.cs" />
     <EmbeddedResource Include="FormAccueil.resx">
       <DependentUpon>FormAccueil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAfficherReservation.resx">
       <DependentUpon>FormAfficherReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAfficherTraversee.resx">
+      <DependentUpon>FormAfficherTraversee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjouterBateau.resx">
       <DependentUpon>FormAjouterBateau.cs</DependentUpon>
@@ -163,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjouterSecteur.resx">
       <DependentUpon>FormAjouterSecteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAjouterTarif.resx">
+      <DependentUpon>FormAjouterTarif.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjouterTraversee.resx">
       <DependentUpon>FormAjouterTraversee.cs</DependentUpon>

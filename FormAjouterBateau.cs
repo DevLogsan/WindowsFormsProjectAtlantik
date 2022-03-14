@@ -84,7 +84,6 @@ namespace WindowsFormsProjectAtlantik
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string requete;
