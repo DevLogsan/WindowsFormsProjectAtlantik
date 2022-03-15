@@ -83,7 +83,6 @@ namespace WindowsFormsProjectAtlantik
                 }
             }
         }
-
         private void btnAfficher_Click(object sender, EventArgs e)
         {
             try
