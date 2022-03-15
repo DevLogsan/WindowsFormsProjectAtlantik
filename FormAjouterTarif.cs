@@ -24,7 +24,7 @@ namespace WindowsFormsProjectAtlantik
 
         private void FormAjouterTarif_Load(object sender, EventArgs e)
         {
-             // Afficher les secteurs
+            // Afficher les secteurs
             try
             {
                 string requête;
@@ -106,7 +106,6 @@ namespace WindowsFormsProjectAtlantik
 
                     TextBox tbx = new TextBox();
                     tbx.Tag = jeuEnr["lettrecategorie"].ToString() + ";" + int.Parse(jeuEnr["notype"].ToString());
-                    champs = lbl.ToString().Split(';');
                     tbx.Location = new Point(180, i * 35);
                     gbxGroupe.Controls.Add(lbl);
                     gbxGroupe.Controls.Add(tbx);
@@ -171,7 +170,7 @@ namespace WindowsFormsProjectAtlantik
                 var tbx = gbxGroupe.Controls.OfType<TextBox>(); //on recup tte les txb dans gbxGroup
                 foreach (TextBox text in tbx)
                 {
-
+                    champs = (text.Tag).ToString().Split(';');
                     monAjout.Parameters.AddWithValue("@NOPERIODE", ((Periode)cmbPeriode.SelectedItem).GetNumero());
                     monAjout.Parameters.AddWithValue("@LETTRECATEGORIE", champs[0]);
                     monAjout.Parameters.AddWithValue("@NOTYPE", champs[1]);
