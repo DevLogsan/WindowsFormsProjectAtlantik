@@ -71,6 +71,7 @@ namespace WindowsFormsProjectAtlantik
             this.gbxReservation.TabIndex = 3;
             this.gbxReservation.TabStop = false;
             this.gbxReservation.Text = "Réservation";
+            this.gbxReservation.Enter += new System.EventHandler(this.gbxReservation_Enter);
             // 
             // FormAfficherReservation
             // 

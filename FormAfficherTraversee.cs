@@ -20,6 +20,28 @@ namespace WindowsFormsProjectAtlantik
             InitializeComponent();
             maConnexion = new MySqlConnection("server=localhost;user=root;database=atlantik2022;port=3306;password=");
         }
+        private int GetCapaciteMaximale(int noTraversee, string lettrecategorie)
+        {
+            try
+            {
+                string requete;
+                maConnexion.Open();
+
+                requete = "";
+            }
+            catch (MySqlException erreur)
+            {
+                MessageBox.Show("Erreur " + erreur.ToString());
+                return -1; // on retourne une autre valeur que 0
+            }
+            finally
+            {
+                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                {
+                    maConnexion.Close();
+                }
+            }
+        }
         private int GetQuantiteEnregistree(int noTraversee, string lettrecategorie)
         {
             try
@@ -98,7 +120,7 @@ namespace WindowsFormsProjectAtlantik
                 lvInformation.FullRowSelect = true;
 
                 lvInformation.Columns.Add("n°", 30);
-                lvInformation.Columns.Add("Heure", 50);
+                lvInformation.Columns.Add("Heure", 30);
                 lvInformation.Columns.Add("Bateau", 100);
 
                 int x = 0;
@@ -123,7 +145,6 @@ namespace WindowsFormsProjectAtlantik
                 }
             }
         }
-
         private void lbxSecteur_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -173,8 +194,7 @@ namespace WindowsFormsProjectAtlantik
                     var tabItem = new string[3 + tableauCategorie.Length];
 
                     tabItem[0] = jeuEnr["notraversee"].ToString();
-                    tabItem[1] = ((DateTime)jeuEnr["dateheuredepart"])
-                        .ToString("HH:mm");
+                    tabItem[1] = ((DateTime)jeuEnr["dateheuredepart"]).ToString("HH:mm");
                     tabItem[2] = jeuEnr["nom"].ToString();
 
                     ListViewItem Item = new ListViewItem(tabItem);
