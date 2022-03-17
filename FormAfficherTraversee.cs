@@ -14,10 +14,43 @@ namespace WindowsFormsProjectAtlantik
     public partial class FormAfficherTraversee : Form
     {
         MySqlConnection maConnexion;
+        Categorie[] tableauCategorie = new Categorie[100];
         public FormAfficherTraversee()
         {
             InitializeComponent();
             maConnexion = new MySqlConnection("server=localhost;user=root;database=atlantik2022;port=3306;password=");
+        }
+        private int GetQuantiteEnregistree(int noTraversee, string lettrecategorie)
+        {
+            try
+            {
+                string requete;
+                maConnexion.Open();
+
+                requete = "SELECT sum(quantite)'QuantiteEnregistree' FROM enregistrer e, traversee t, reservation r where e.noreservation = r.noreservation and r.notraversee = t.notraversee and e.lettrecategorie = @LETTRECATEGORIE and t.notraversee = @NOTRAVERSEE";
+                var maCommande = new MySqlCommand(requete, maConnexion);
+
+                maCommande.Parameters.AddWithValue("@NOTRAVERSEE", noTraversee);
+                maCommande.Parameters.AddWithValue("@LETTRECATEGORIE", lettrecategorie);
+                MySqlDataReader jeuEnr = maCommande.ExecuteReader();
+                jeuEnr.Read();
+                if(jeuEnr["QuantiteEnregistree"] == null)  // si c'est NULL on retourne 0
+                    { return 0; }
+                else
+                    { return jeuEnr.GetInt32("QuantiteEnregistree"); } // sinon on retourne la valeur normal
+            }
+            catch (MySqlException erreur)
+            {
+                MessageBox.Show("Erreur " + erreur.ToString());
+                return -1; // on retourne une autre valeur que 0
+            }
+            finally
+            {
+                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                {
+                    maConnexion.Close();
+                }
+            }
         }
         private void FormAfficherTraversee_Load(object sender, EventArgs e)
         {
@@ -37,6 +70,45 @@ namespace WindowsFormsProjectAtlantik
                 {
                     Secteur monSecteur = new Secteur(jeuEnr.GetInt32("nosecteur"), jeuEnr.GetString("nom"));
                     lbxSecteur.Items.Add(monSecteur);
+                }
+            }
+            catch (MySqlException erreur)
+            {
+                MessageBox.Show("Erreur " + erreur.ToString());
+            }
+            finally
+            {
+                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                {
+                    maConnexion.Close();
+                }
+            }
+            try
+            {
+                maConnexion.Open();
+                string requete;
+                requete = "SELECT * FROM categorie";
+                var maCommande = new MySqlCommand(requete, maConnexion);
+                MySqlDataReader jeuEnr2 = maCommande.ExecuteReader();
+
+                lvInformation.Items.Clear();
+
+                lvInformation.View = View.Details;
+                lvInformation.GridLines = true;
+                lvInformation.FullRowSelect = true;
+
+                lvInformation.Columns.Add("n°", 30);
+                lvInformation.Columns.Add("Heure", 50);
+                lvInformation.Columns.Add("Bateau", 100);
+
+                int x = 0;
+
+                while (jeuEnr2.Read())
+                {
+                    Categorie maCategorie = new Categorie(jeuEnr2.GetString("lettrecategorie"), jeuEnr2.GetString("libelle"));
+                    lvInformation.Columns.Add(maCategorie.GetLettreCategorie() + " " + maCategorie.GetLibelle(), 100);
+                    tableauCategorie[x] = maCategorie;
+                    x++;
                 }
             }
             catch (MySqlException erreur)
@@ -87,36 +159,23 @@ namespace WindowsFormsProjectAtlantik
         {
             try
             {
-                lvInformation.View = View.Details;
-                lvInformation.GridLines = true;
-                lvInformation.FullRowSelect = true;
-
-                lvInformation.Columns.Add("n°", 50);
-                lvInformation.Columns.Add("Heure", 100);
-                lvInformation.Columns.Add("Bateau", 100);
-                lvInformation.Columns.Add("A Passager", 100);
-                lvInformation.Columns.Add("B Véh.inf.2m", 100);
-                lvInformation.Columns.Add("C Véh.sup.2m", 100);
-
                 maConnexion.Open();
-                lvInformation.Items.Clear();
 
-                // !!! A FINIR !!!
-
-                string information = "SELECT r.noreservation, a.nom AS portdepart, d.nom AS portarrivee, t.notraversee, t.dateheuredepart FROM client c, reservation r, traversee t, reservation e, liaison l, port a, port d WHERE c.noclient = r.noclient AND e.notraversee = t.notraversee AND t.noliaison = l.noliaison AND a.noport = l.noport_depart AND d.noport = l.noport_arrivee AND c.noclient = @NOCLIENT";
+                string information = "SELECT t.notraversee, t.dateheuredepart, b.nom FROM traversee t, bateau b WHERE t.nobateau = b.nobateau AND noliaison = @NOLIAISON AND dateheuredepart like @DATE";
                 var maCommande = new MySqlCommand(information, maConnexion);
 
-                 maCommande.Parameters.AddWithValue("@NOCLIENT", ((Client)cmbNomPrenom.SelectedItem).GetNumeroClient());
+                maCommande.Parameters.AddWithValue("@NOLIAISON", ((Liaison)cmbLiaison.SelectedItem).GetNumero());
+                maCommande.Parameters.AddWithValue("@DATE", dateTraversee.Value.ToString("yyyy-MM-dd") + "%");
 
                 MySqlDataReader jeuEnr = maCommande.ExecuteReader();
                 while (jeuEnr.Read())
                 {
-                    var tabItem = new string[5];
+                    var tabItem = new string[3 + tableauCategorie.Length];
 
-                    tabItem[0] = jeuEnr["noreservation"].ToString();
-                    tabItem[1] = jeuEnr["portdepart"].ToString() + " - " + jeuEnr["portarrivee"].ToString();
-                    tabItem[2] = jeuEnr["notraversee"].ToString();
-                    tabItem[3] = jeuEnr["dateheuredepart"].ToString();
+                    tabItem[0] = jeuEnr["notraversee"].ToString();
+                    tabItem[1] = ((DateTime)jeuEnr["dateheuredepart"])
+                        .ToString("HH:mm");
+                    tabItem[2] = jeuEnr["nom"].ToString();
 
                     ListViewItem Item = new ListViewItem(tabItem);
                     lvInformation.Items.Add(Item);

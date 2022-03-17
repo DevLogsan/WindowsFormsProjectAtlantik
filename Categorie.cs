@@ -22,6 +22,11 @@ namespace WindowsFormsProjectAtlantik
             return lettrecategorie;
         }
 
+        public string GetLibelle()
+        {
+            return libelle;
+        }
+
         public override string ToString()
         {
             return  lettrecategorie + "(" + libelle + ") :";
