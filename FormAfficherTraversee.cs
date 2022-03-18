@@ -27,7 +27,17 @@ namespace WindowsFormsProjectAtlantik
                 string requete;
                 maConnexion.Open();
 
-                requete = "";
+                requete = "SELECT sum(capacitemax)'CapaciteMax' FROM  contenir c, traversee t, bateau b where t.nobateau = b.nobateau and b.nobateau = c.nobateau and c.lettrecategorie = @LETTRECATEGORIE and t.notraversee = @NOTRAVERSEE";
+                var maCommande = new MySqlCommand(requete, maConnexion);
+
+                maCommande.Parameters.AddWithValue("@NOTRAVERSEE", noTraversee);
+                maCommande.Parameters.AddWithValue("@LETTRECATEGORIE", lettrecategorie);
+                MySqlDataReader jeuEnr = maCommande.ExecuteReader();
+                jeuEnr.Read();
+                if (jeuEnr["CapaciteMax"] == null)  // si c'est NULL on retourne 0
+                { return 0; }
+                else
+                { return jeuEnr.GetInt32("CapaciteMax"); } // sinon on retourne la valeur normal
             }
             catch (MySqlException erreur)
             {
@@ -105,6 +115,7 @@ namespace WindowsFormsProjectAtlantik
                     maConnexion.Close();
                 }
             }
+
             try
             {
                 maConnexion.Open();
@@ -196,6 +207,16 @@ namespace WindowsFormsProjectAtlantik
                     tabItem[0] = jeuEnr["notraversee"].ToString();
                     tabItem[1] = ((DateTime)jeuEnr["dateheuredepart"]).ToString("HH:mm");
                     tabItem[2] = jeuEnr["nom"].ToString();
+                    int x = 3;
+                    foreach(Categorie maCategorie in tableauCategorie)
+                    {
+                        if(maCategorie != null)
+                        {
+                            int resultat = GetCapaciteMaximale(jeuEnr.GetInt32("notraversee"), maCategorie.GetLettreCategorie()) - GetQuantiteEnregistree(jeuEnr.GetInt32("notraversee"), maCategorie.GetLettreCategorie());
+                            tabItem[x] = resultat.ToString();
+                            x++;
+                        }
+                    }
 
                     ListViewItem Item = new ListViewItem(tabItem);
                     lvInformation.Items.Add(Item);
