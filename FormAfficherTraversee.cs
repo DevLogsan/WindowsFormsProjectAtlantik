@@ -22,13 +22,14 @@ namespace WindowsFormsProjectAtlantik
         }
         private int GetCapaciteMaximale(int noTraversee, string lettrecategorie)
         {
+            MySqlConnection maMySQLCon = new MySqlConnection("server=localhost;user=root;database=atlantik2022;port=3306;password=");
             try
             {
+                maMySQLCon.Open();
                 string requete;
-                maConnexion.Open();
 
                 requete = "SELECT sum(capacitemax)'CapaciteMax' FROM  contenir c, traversee t, bateau b where t.nobateau = b.nobateau and b.nobateau = c.nobateau and c.lettrecategorie = @LETTRECATEGORIE and t.notraversee = @NOTRAVERSEE";
-                var maCommande = new MySqlCommand(requete, maConnexion);
+                var maCommande = new MySqlCommand(requete, maMySQLCon);
 
                 maCommande.Parameters.AddWithValue("@NOTRAVERSEE", noTraversee);
                 maCommande.Parameters.AddWithValue("@LETTRECATEGORIE", lettrecategorie);
@@ -46,21 +47,22 @@ namespace WindowsFormsProjectAtlantik
             }
             finally
             {
-                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                if (maMySQLCon is object & maMySQLCon.State == ConnectionState.Open)
                 {
-                    maConnexion.Close();
+                    maMySQLCon.Close();
                 }
             }
         }
         private int GetQuantiteEnregistree(int noTraversee, string lettrecategorie)
         {
+            MySqlConnection maMySQLCon = new MySqlConnection("server=localhost;user=root;database=atlantik2022;port=3306;password=");
             try
             {
                 string requete;
-                maConnexion.Open();
+                maMySQLCon.Open();
 
                 requete = "SELECT sum(quantite)'QuantiteEnregistree' FROM enregistrer e, traversee t, reservation r where e.noreservation = r.noreservation and r.notraversee = t.notraversee and e.lettrecategorie = @LETTRECATEGORIE and t.notraversee = @NOTRAVERSEE";
-                var maCommande = new MySqlCommand(requete, maConnexion);
+                var maCommande = new MySqlCommand(requete, maMySQLCon);
 
                 maCommande.Parameters.AddWithValue("@NOTRAVERSEE", noTraversee);
                 maCommande.Parameters.AddWithValue("@LETTRECATEGORIE", lettrecategorie);
@@ -78,9 +80,9 @@ namespace WindowsFormsProjectAtlantik
             }
             finally
             {
-                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                if (maMySQLCon is object & maMySQLCon.State == ConnectionState.Open)
                 {
-                    maConnexion.Close();
+                    maMySQLCon.Close();
                 }
             }
         }
