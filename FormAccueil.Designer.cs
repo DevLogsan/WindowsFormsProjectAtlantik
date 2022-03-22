@@ -40,13 +40,13 @@ namespace WindowsFormsProjectAtlantik
             this.miAjouterTarif = new System.Windows.Forms.ToolStripMenuItem();
             this.mmEdition = new System.Windows.Forms.ToolStripMenuItem();
             this.miModifierBateau = new System.Windows.Forms.ToolStripMenuItem();
-            this.miModifierParametres = new System.Windows.Forms.ToolStripMenuItem();
             this.mmAffichage = new System.Windows.Forms.ToolStripMenuItem();
             this.miAfficherTraversee = new System.Windows.Forms.ToolStripMenuItem();
-            this.miAfficherTraverseeLiaison = new System.Windows.Forms.ToolStripMenuItem();
             this.miAfficherDetailReservation = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAfficherTraverseeLiaison = new System.Windows.Forms.ToolStripMenuItem();
             this.customInstaller1 = new MySql.Data.MySqlClient.CustomInstaller();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifierLesParamètresDuSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msAccueil.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,7 +138,7 @@ namespace WindowsFormsProjectAtlantik
             // 
             this.mmEdition.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miModifierBateau,
-            this.miModifierParametres});
+            this.modifierLesParamètresDuSiteToolStripMenuItem});
             this.mmEdition.ForeColor = System.Drawing.Color.White;
             this.mmEdition.Name = "mmEdition";
             this.mmEdition.Size = new System.Drawing.Size(56, 22);
@@ -153,15 +153,6 @@ namespace WindowsFormsProjectAtlantik
             this.miModifierBateau.Size = new System.Drawing.Size(236, 22);
             this.miModifierBateau.Text = "Modifier un bateau";
             this.miModifierBateau.Click += new System.EventHandler(this.miModifierBateau_Click);
-            // 
-            // miModifierParametres
-            // 
-            this.miModifierParametres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.miModifierParametres.ForeColor = System.Drawing.Color.White;
-            this.miModifierParametres.Name = "miModifierParametres";
-            this.miModifierParametres.Size = new System.Drawing.Size(236, 22);
-            this.miModifierParametres.Text = "Modifier les paramètres du site";
-            this.miModifierParametres.Click += new System.EventHandler(this.miModifierParametres_Click);
             // 
             // mmAffichage
             // 
@@ -185,6 +176,15 @@ namespace WindowsFormsProjectAtlantik
             this.miAfficherTraversee.Text = "Afficher une traversée";
             this.miAfficherTraversee.Click += new System.EventHandler(this.miAfficherTraversee_Click);
             // 
+            // miAfficherDetailReservation
+            // 
+            this.miAfficherDetailReservation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.miAfficherDetailReservation.ForeColor = System.Drawing.Color.White;
+            this.miAfficherDetailReservation.Name = "miAfficherDetailReservation";
+            this.miAfficherDetailReservation.Size = new System.Drawing.Size(566, 22);
+            this.miAfficherDetailReservation.Text = "Afficher les détails d\'une réservation pour un client";
+            this.miAfficherDetailReservation.Click += new System.EventHandler(this.miAfficherDetailReservation_Click);
+            // 
             // miAfficherTraverseeLiaison
             // 
             this.miAfficherTraverseeLiaison.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -195,19 +195,17 @@ namespace WindowsFormsProjectAtlantik
     " par catégorie";
             this.miAfficherTraverseeLiaison.Click += new System.EventHandler(this.miAfficherTraverseeLiaison_Click);
             // 
-            // miAfficherDetailReservation
-            // 
-            this.miAfficherDetailReservation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.miAfficherDetailReservation.ForeColor = System.Drawing.Color.White;
-            this.miAfficherDetailReservation.Name = "miAfficherDetailReservation";
-            this.miAfficherDetailReservation.Size = new System.Drawing.Size(566, 22);
-            this.miAfficherDetailReservation.Text = "Afficher les détails d\'une réservation pour un client";
-            this.miAfficherDetailReservation.Click += new System.EventHandler(this.miAfficherDetailReservation_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // modifierLesParamètresDuSiteToolStripMenuItem
+            // 
+            this.modifierLesParamètresDuSiteToolStripMenuItem.Name = "modifierLesParamètresDuSiteToolStripMenuItem";
+            this.modifierLesParamètresDuSiteToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.modifierLesParamètresDuSiteToolStripMenuItem.Text = "Modifier les paramètres du site";
+            this.modifierLesParamètresDuSiteToolStripMenuItem.Click += new System.EventHandler(this.modifierLesParamètresDuSiteToolStripMenuItem_Click);
             // 
             // FormAccueil
             // 
@@ -244,13 +242,13 @@ namespace WindowsFormsProjectAtlantik
         private System.Windows.Forms.ToolStripMenuItem mmAffichage;
         private System.Windows.Forms.ToolStripMenuItem mmEdition;
         private System.Windows.Forms.ToolStripMenuItem miModifierBateau;
-        private System.Windows.Forms.ToolStripMenuItem miModifierParametres;
         private System.Windows.Forms.ToolStripMenuItem miAfficherTraversee;
         private System.Windows.Forms.ToolStripMenuItem miAfficherTraverseeLiaison;
         private System.Windows.Forms.ToolStripMenuItem miAfficherDetailReservation;
         private MySql.Data.MySqlClient.CustomInstaller customInstaller1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MiAjouterTraversee;
+        private System.Windows.Forms.ToolStripMenuItem modifierLesParamètresDuSiteToolStripMenuItem;
     }
 }
 

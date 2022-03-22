@@ -83,7 +83,8 @@ namespace WindowsFormsProjectAtlantik
         // Modifier les paramètres du site
         private void miModifierParametres_Click(object sender, EventArgs e)
         {
-
+            FormParametre formParametre = new FormParametre();
+            formParametre.ShowDialog();
         }
         // ----- AFFICHAGE -----
         private void mmAffichage_Click(object sender, EventArgs e)
@@ -106,6 +107,11 @@ namespace WindowsFormsProjectAtlantik
         {
             FormAfficherReservation formAjouterReservation = new FormAfficherReservation();
             formAjouterReservation.ShowDialog();
+        }
+        private void modifierLesParamètresDuSiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormParametre formParametre = new FormParametre();
+            formParametre.ShowDialog();
         }
     }
 }

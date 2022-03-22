@@ -110,16 +110,16 @@ namespace WindowsFormsProjectAtlantik
                 maConnexion.Open();
                 int i = 1;
 
-                requete = "SELECT libelle, quantite FROM type t, enregistrer e WHERE t.lettrecategorie = e.lettrecategorie AND t.notype = e.notype AND e.noreservation = @NORESERVATION";
+                requete = "SELECT r.montanttotal, libelle, quantite FROM type t, enregistrer e, reservation r WHERE t.lettrecategorie = e.lettrecategorie AND t.notype = e.notype AND r.noclient = @NOCLIENT AND e.noreservation = @NORESERVATION";
                 var maCommande = new MySqlCommand(requete, maConnexion);
                 maCommande.Parameters.AddWithValue("@NORESERVATION", int.Parse(lvInformation.SelectedItems[0].Text));
 
                 MySqlDataReader jeuEnr = maCommande.ExecuteReader();
                 while (jeuEnr.Read())
                 {
-                    Reservation monType = new Reservation(jeuEnr["libelle"].ToString(), int.Parse(jeuEnr["quantite"].ToString()));
+                    //Reservation monType = new Reservation(jeuEnr["libelle"].ToString(), int.Parse(jeuEnr["quantite"].ToString()), jeuEnr.GetDouble["montanttotal"].ToString());
                     Label lbl = new Label();
-                    lbl.Text = monType.ToString();
+                    //lbl.Text = monType.ToString();
                     lbl.Location = new Point(5, i * 25);
 
                     gbxReservation.Controls.Add(lbl);

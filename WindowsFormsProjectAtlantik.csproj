@@ -152,6 +152,12 @@
     <Compile Include="FormAjouterTraversee.Designer.cs">
       <DependentUpon>FormAjouterTraversee.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormParametre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormParametre.Designer.cs">
+      <DependentUpon>FormParametre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Liaison.cs" />
     <Compile Include="Periode.cs" />
     <Compile Include="Port.cs" />
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormModifierBateau.resx">
       <DependentUpon>FormModifierBateau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormParametre.resx">
+      <DependentUpon>FormParametre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -68,7 +68,7 @@ namespace WindowsFormsProjectAtlantik
                 maCommande.Parameters.AddWithValue("@LETTRECATEGORIE", lettrecategorie);
                 MySqlDataReader jeuEnr = maCommande.ExecuteReader();
                 jeuEnr.Read();
-                if(jeuEnr["QuantiteEnregistree"] == null)  // si c'est NULL on retourne 0
+                if(jeuEnr["QuantiteEnregistree"].ToString() == "")  // si c'est NULL on retourne 0
                     { return 0; }
                 else
                     { return jeuEnr.GetInt32("QuantiteEnregistree"); } // sinon on retourne la valeur normal
