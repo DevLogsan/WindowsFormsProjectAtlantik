@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsProjectAtlantik
 {
@@ -17,22 +18,15 @@ namespace WindowsFormsProjectAtlantik
         {
             InitializeComponent();
         }
-
         private void FormAjouterSecteur_Load(object sender, EventArgs e)
         {
-
         }
-
         private void lblNomSecteur_Click(object sender, EventArgs e)
         {
-
         }
-
         private void tbxAjouterSecteur_TextChanged(object sender, EventArgs e)
         {
-
         }
-
         private void btnAjouterSecteur_Click(object sender, EventArgs e)
         {
             MySqlConnection maConnexion;
@@ -43,12 +37,33 @@ namespace WindowsFormsProjectAtlantik
                 string requête;
                 maConnexion.Open(); // on se connecte
 
-                requête = "INSERT INTO secteur(nom) VALUES(@NOM)";
-                var maCommande = new MySqlCommand(requête, maConnexion);
+                var objetRegEx = new Regex("[a-zA-Z]");
+                var résultatTest = objetRegEx.Match(tbxAjouterSecteur.Text);
 
-                maCommande.Parameters.AddWithValue("@NOM", tbxAjouterSecteur.Text);
-                maCommande.ExecuteNonQuery();
-                tbxAjouterSecteur.Clear();
+                if (!résultatTest.Success)
+                {
+                    tbxAjouterSecteur.BackColor = Color.Red;
+                    MessageBox.Show("Erreur lors de la saisie");
+                }
+                else
+                {
+                    DialogResult retour;
+                    retour = MessageBox.Show("Ajouter un secteur ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if(retour == DialogResult.Yes)
+                    {
+                        requête = "INSERT INTO secteur(nom) VALUES(@NOM)";
+                        var maCommande = new MySqlCommand(requête, maConnexion);
+
+                        maCommande.Parameters.AddWithValue("@NOM", tbxAjouterSecteur.Text);
+                        maCommande.ExecuteNonQuery();
+                        MessageBox.Show("Le secteur : " + tbxAjouterSecteur.Text + "a été ajouté.");
+                        tbxAjouterSecteur.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Non");
+                    }
+                }
             }
             catch (MySqlException erreur)
             {

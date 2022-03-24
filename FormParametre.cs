@@ -33,45 +33,16 @@ namespace WindowsFormsProjectAtlantik
                 MySqlDataReader jeuEnr = null;
                 jeuEnr = maCommande.ExecuteReader();
 
-                    // Affichage "Site"
-                    Label lblSite = new Label();
-                    TextBox tbxSite = new TextBox();
-                    lblSite.Text = "Site :";
-                    lblSite.Location = new Point(5, 30);
-                    tbxSite.Tag = "@SITE_PB";
-                    tbxSite.Location = new Point(120, 30);
-                    gbxIdentifiant.Controls.Add(lblSite);
-                    gbxIdentifiant.Controls.Add(tbxSite);
-
-                    // Affichage "Rang"
-                    Label lblRang = new Label();
-                    TextBox tbxRang = new TextBox();
-                    lblRang.Text = "Rang :";
-                    lblRang.Location = new Point(5, 60);
-                    tbxRang.Tag = "@RANG_PB";
-                    tbxRang.Location = new Point(120, 60);
-                    gbxIdentifiant.Controls.Add(lblRang);
-                    gbxIdentifiant.Controls.Add(tbxRang);
-
-                    // Affichage "Identifiant"
-                    Label lblIdentifiant = new Label();
-                    TextBox tbxIdentifiant = new TextBox();
-                    lblIdentifiant.Text = "Identifiant :";
-                    lblIdentifiant.Location = new Point(5, 90);
-                    tbxIdentifiant.Tag = "@IDENTIFIANT_PB";
-                    tbxIdentifiant.Location = new Point(120, 90);
-                    gbxIdentifiant.Controls.Add(lblIdentifiant);
-                    gbxIdentifiant.Controls.Add(tbxIdentifiant);
-
-                    // Affichage "Clé HMAC"
-                    Label lblCle = new Label();
-                    TextBox tbxCle = new TextBox();
-                    lblCle.Text = "Clé HMAC :";
-                    lblCle.Location = new Point(5, 120);
-                    tbxCle.Tag = "@CLEHMAC_PB";
-                    tbxCle.Location = new Point(120, 120);
-                    gbxIdentifiant.Controls.Add(lblCle);
-                    gbxIdentifiant.Controls.Add(tbxCle);
+                // Affichage des données dans les TextBox
+                while(jeuEnr.Read())
+                {
+                    tbxSite.Text = jeuEnr["site_pb"].ToString();
+                    tbxRang.Text = jeuEnr["rang_pb"].ToString();
+                    tbxIdentifiant.Text = jeuEnr["identifiant_pb"].ToString();
+                    tbxCle.Text = jeuEnr["clehmac_pb"].ToString();
+                    cbxProduction.Checked = (bool)jeuEnr["enproduction"];
+                    tbxMailSite.Text = jeuEnr["melsite"].ToString();
+                }
             }
             catch (MySqlException erreur)
             {
@@ -85,33 +56,28 @@ namespace WindowsFormsProjectAtlantik
                 }
             }
         }
-
         private void gbxIdentifiant_Enter(object sender, EventArgs e)
         {
 
         }
-
         private void btnModifier_Click(object sender, EventArgs e)
         {
             try
             {
                 maConnexion.Open();
-
                 string requete;
 
-                requete = "UPDATE contenir SET capacitemax = @CAPACITEMAX WHERE nobateau = @NOBATEAU AND lettrecategorie = @LETTRECATEGORIE";
-                var monAjout = new MySqlCommand(requete, maConnexion);
+                requete = "UPDATE parametres SET site_pb = @SITE_PB, rang_pb = @RANG_PB, identifiant_pb = @IDENTIFIANT_PB, clehmac_pb = @CLEHMAC_PB, enproduction = @ENPRODUCTION, melsite = @MELSITE WHERE noidentifiant = 1";
+                var maModification = new MySqlCommand(requete, maConnexion);
 
-                var tbx = gbxIdentifiant.Controls.OfType<TextBox>(); //on recup tte les txb dans gbxGroup
-                foreach (TextBox text in tbx)
-                {
-                    monAjout.Parameters.AddWithValue("@CAPACITEMAX", text.Text);
-                    //monAjout.Parameters.AddWithValue("@NOBATEAU", ((Bateau)cmbNomBateau.SelectedItem).GetNumero());
-                    monAjout.Parameters.AddWithValue("@LETTRECATEGORIE", text.Tag);
-                    monAjout.ExecuteNonQuery();
+                    maModification.Parameters.AddWithValue("@SITE_PB", tbxSite.Text);
+                    maModification.Parameters.AddWithValue("@RANG_PB", tbxRang.Text);
+                    maModification.Parameters.AddWithValue("@IDENTIFIANT_PB", tbxIdentifiant.Text);
+                    maModification.Parameters.AddWithValue("@CLEHMAC_PB", tbxCle.Text);
+                    maModification.Parameters.AddWithValue("@ENPRODUCTION", cbxProduction.Checked);
+                    maModification.Parameters.AddWithValue("@MELSITE", tbxMailSite.Text);
+                    maModification.ExecuteNonQuery();
 
-                    monAjout.Parameters.Clear();
-                }
             }
             catch (MySqlException erreur)
             {
@@ -124,6 +90,16 @@ namespace WindowsFormsProjectAtlantik
                     maConnexion.Close();
                 }
             }
+        }
+
+        private void cbxProduction_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbxCle_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

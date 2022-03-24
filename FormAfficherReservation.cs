@@ -117,13 +117,30 @@ namespace WindowsFormsProjectAtlantik
                 MySqlDataReader jeuEnr = maCommande.ExecuteReader();
                 while (jeuEnr.Read())
                 {
-                    //Reservation monType = new Reservation(jeuEnr["libelle"].ToString(), int.Parse(jeuEnr["quantite"].ToString()), jeuEnr.GetDouble["montanttotal"].ToString());
+                    Reservation monType = new Reservation(jeuEnr["libelle"].ToString(), int.Parse(jeuEnr["quantite"].ToString()));
                     Label lbl = new Label();
-                    //lbl.Text = monType.ToString();
+                    lbl.Text = monType.ToString();
                     lbl.Location = new Point(5, i * 25);
 
                     gbxReservation.Controls.Add(lbl);
                     i++;
+                }
+                jeuEnr.Close();
+                string requete2;
+
+                requete2 = "SELECT montanttotal FROM reservation WHERE noreservation = @NORESERVATION";
+                var maCommande2 = new MySqlCommand(requete2, maConnexion);
+                maCommande2.Parameters.AddWithValue("@NORESERVATION", int.Parse(lvInformation.SelectedItems[0].Text));
+
+                MySqlDataReader jeuEnr2 = maCommande.ExecuteReader();
+                while (jeuEnr2.Read())
+                {
+                    Label lbl;
+                    lbl = new Label();
+                    lbl.Text = "Montant total : " + jeuEnr2["montanttotal"].ToString();
+                    lbl.Size = new Size(300, 100);
+                    lbl.Location = new Point(5, i * 25);
+                    gbxReservation.Controls.Add(lbl);
                 }
             }
             catch (MySqlException erreur)

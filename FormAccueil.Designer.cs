@@ -40,13 +40,13 @@ namespace WindowsFormsProjectAtlantik
             this.miAjouterTarif = new System.Windows.Forms.ToolStripMenuItem();
             this.mmEdition = new System.Windows.Forms.ToolStripMenuItem();
             this.miModifierBateau = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifierLesParamètresDuSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mmAffichage = new System.Windows.Forms.ToolStripMenuItem();
             this.miAfficherTraversee = new System.Windows.Forms.ToolStripMenuItem();
             this.miAfficherDetailReservation = new System.Windows.Forms.ToolStripMenuItem();
             this.miAfficherTraverseeLiaison = new System.Windows.Forms.ToolStripMenuItem();
             this.customInstaller1 = new MySql.Data.MySqlClient.CustomInstaller();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.modifierLesParamètresDuSiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msAccueil.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -154,6 +154,15 @@ namespace WindowsFormsProjectAtlantik
             this.miModifierBateau.Text = "Modifier un bateau";
             this.miModifierBateau.Click += new System.EventHandler(this.miModifierBateau_Click);
             // 
+            // modifierLesParamètresDuSiteToolStripMenuItem
+            // 
+            this.modifierLesParamètresDuSiteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.modifierLesParamètresDuSiteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.modifierLesParamètresDuSiteToolStripMenuItem.Name = "modifierLesParamètresDuSiteToolStripMenuItem";
+            this.modifierLesParamètresDuSiteToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.modifierLesParamètresDuSiteToolStripMenuItem.Text = "Modifier les paramètres du site";
+            this.modifierLesParamètresDuSiteToolStripMenuItem.Click += new System.EventHandler(this.modifierLesParamètresDuSiteToolStripMenuItem_Click);
+            // 
             // mmAffichage
             // 
             this.mmAffichage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
@@ -199,13 +208,6 @@ namespace WindowsFormsProjectAtlantik
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // modifierLesParamètresDuSiteToolStripMenuItem
-            // 
-            this.modifierLesParamètresDuSiteToolStripMenuItem.Name = "modifierLesParamètresDuSiteToolStripMenuItem";
-            this.modifierLesParamètresDuSiteToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.modifierLesParamètresDuSiteToolStripMenuItem.Text = "Modifier les paramètres du site";
-            this.modifierLesParamètresDuSiteToolStripMenuItem.Click += new System.EventHandler(this.modifierLesParamètresDuSiteToolStripMenuItem_Click);
             // 
             // FormAccueil
             // 
