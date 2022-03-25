@@ -51,13 +51,13 @@ namespace WindowsFormsProjectAtlantik
                     retour = MessageBox.Show("Ajouter un secteur ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if(retour == DialogResult.Yes)
                     {
-                        requête = "INSERT INTO secteur(nom) VALUES(@NOM)";
-                        var maCommande = new MySqlCommand(requête, maConnexion);
+                            requête = "INSERT INTO secteur(nom) VALUES(@NOM)";
+                            var maCommande = new MySqlCommand(requête, maConnexion);
 
-                        maCommande.Parameters.AddWithValue("@NOM", tbxAjouterSecteur.Text);
-                        maCommande.ExecuteNonQuery();
-                        MessageBox.Show("Le secteur : " + tbxAjouterSecteur.Text + "a été ajouté.");
-                        tbxAjouterSecteur.Clear();
+                            maCommande.Parameters.AddWithValue("@NOM", tbxAjouterSecteur.Text);
+                            maCommande.ExecuteNonQuery();
+                            MessageBox.Show("Le secteur : " + tbxAjouterSecteur.Text + "a été ajouté.");
+                            tbxAjouterSecteur.Clear();
                     }
                     else
                     {
