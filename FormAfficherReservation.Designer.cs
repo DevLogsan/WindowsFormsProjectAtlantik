@@ -29,22 +29,13 @@ namespace WindowsFormsProjectAtlantik
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblNomPrenom = new System.Windows.Forms.Label();
             this.cmbNomPrenom = new System.Windows.Forms.ComboBox();
             this.lvInformation = new System.Windows.Forms.ListView();
             this.gbxReservation = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblNomPrenom = new System.Windows.Forms.Label();
             this.gbxReservation.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblNomPrenom
-            // 
-            this.lblNomPrenom.AutoSize = true;
-            this.lblNomPrenom.Location = new System.Drawing.Point(12, 38);
-            this.lblNomPrenom.Name = "lblNomPrenom";
-            this.lblNomPrenom.Size = new System.Drawing.Size(76, 13);
-            this.lblNomPrenom.TabIndex = 0;
-            this.lblNomPrenom.Text = "Nom, prénom :";
             // 
             // cmbNomPrenom
             // 
@@ -84,6 +75,15 @@ namespace WindowsFormsProjectAtlantik
             this.label1.Size = new System.Drawing.Size(124, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Réglé par carte bancaire";
+            // 
+            // lblNomPrenom
+            // 
+            this.lblNomPrenom.AutoSize = true;
+            this.lblNomPrenom.Location = new System.Drawing.Point(12, 38);
+            this.lblNomPrenom.Name = "lblNomPrenom";
+            this.lblNomPrenom.Size = new System.Drawing.Size(76, 13);
+            this.lblNomPrenom.TabIndex = 0;
+            this.lblNomPrenom.Text = "Nom, prénom :";
             // 
             // FormAfficherReservation
             // 

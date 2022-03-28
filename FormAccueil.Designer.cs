@@ -47,7 +47,9 @@ namespace WindowsFormsProjectAtlantik
             this.miAfficherTraverseeLiaison = new System.Windows.Forms.ToolStripMenuItem();
             this.customInstaller1 = new MySql.Data.MySqlClient.CustomInstaller();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.msAccueil.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // msAccueil
@@ -60,7 +62,7 @@ namespace WindowsFormsProjectAtlantik
             this.msAccueil.Location = new System.Drawing.Point(0, 0);
             this.msAccueil.Name = "msAccueil";
             this.msAccueil.Padding = new System.Windows.Forms.Padding(7, 1, 0, 1);
-            this.msAccueil.Size = new System.Drawing.Size(592, 24);
+            this.msAccueil.Size = new System.Drawing.Size(801, 24);
             this.msAccueil.TabIndex = 0;
             this.msAccueil.Text = "menuStrip1";
             this.msAccueil.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.msAccueil_ItemClicked);
@@ -85,6 +87,7 @@ namespace WindowsFormsProjectAtlantik
             this.miAjouterSecteur.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.miAjouterSecteur.ForeColor = System.Drawing.Color.White;
             this.miAjouterSecteur.Name = "miAjouterSecteur";
+            this.miAjouterSecteur.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.miAjouterSecteur.Size = new System.Drawing.Size(326, 22);
             this.miAjouterSecteur.Text = "Ajouter un secteur";
             this.miAjouterSecteur.Click += new System.EventHandler(this.miAjouterSecteur_Click);
@@ -209,13 +212,25 @@ namespace WindowsFormsProjectAtlantik
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::WindowsFormsProjectAtlantik.Properties.Resources._191624366_0ca8c88e_1ddd_43af_8fe2_50a4c9d95b9a;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(801, 449);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // FormAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(592, 287);
+            this.ClientSize = new System.Drawing.Size(801, 473);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.msAccueil);
             this.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -227,6 +242,7 @@ namespace WindowsFormsProjectAtlantik
             this.Load += new System.EventHandler(this.FormAccueil_Load);
             this.msAccueil.ResumeLayout(false);
             this.msAccueil.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,6 +267,7 @@ namespace WindowsFormsProjectAtlantik
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MiAjouterTraversee;
         private System.Windows.Forms.ToolStripMenuItem modifierLesParamètresDuSiteToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

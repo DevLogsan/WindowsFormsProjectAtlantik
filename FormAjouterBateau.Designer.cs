@@ -155,7 +155,7 @@ namespace WindowsFormsProjectAtlantik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 287);
+            this.ClientSize = new System.Drawing.Size(523, 287);
             this.Controls.Add(this.gbxGroupe);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.tbxNomBateau);
