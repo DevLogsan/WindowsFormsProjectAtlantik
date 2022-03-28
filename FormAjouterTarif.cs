@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 
 namespace WindowsFormsProjectAtlantik
@@ -159,47 +160,66 @@ namespace WindowsFormsProjectAtlantik
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            try
+            var vide = false;
+            var tbx = gbxGroupe.Controls.OfType<TextBox>(); //on recup tte les txb dans gbxGroup
+            foreach (TextBox text in tbx)
             {
-                string requete;
-                maConnexion.Open();
-
-                DialogResult retour;
-                retour = MessageBox.Show("Ajouter un port ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (retour == DialogResult.Yes)
+                var objetRegEx = new Regex("^[0-9]*$");
+                var résultatTest = objetRegEx.Match(text.Text);
+                if (!résultatTest.Success | text.Text == "")
                 {
-                    requete = "INSERT INTO tarifer(noperiode, lettrecategorie, notype, noliaison, tarif) VALUES (@NOPERIODE, @LETTRECATEGORIE, @NOTYPE, @NOLIAISON, @TARIF)";
-                    var monAjout = new MySqlCommand(requete, maConnexion);
-
-                    var tbx = gbxGroupe.Controls.OfType<TextBox>(); //on recup tte les txb dans gbxGroup
-                    foreach (TextBox text in tbx)
-                    {
-                        champs = (text.Tag).ToString().Split(';');
-                        monAjout.Parameters.AddWithValue("@NOPERIODE", ((Periode)cmbPeriode.SelectedItem).GetNumero());
-                        monAjout.Parameters.AddWithValue("@LETTRECATEGORIE", champs[0]);
-                        monAjout.Parameters.AddWithValue("@NOTYPE", champs[1]);
-                        monAjout.Parameters.AddWithValue("@NOLIAISON", ((Liaison)cmbLiaison.SelectedItem).GetNumero());
-                        monAjout.Parameters.AddWithValue("@TARIF", text.Text);
-
-                        monAjout.ExecuteNonQuery();
-                        MessageBox.Show("Le tarif a été ajouté.");
-                        monAjout.Parameters.Clear();
-                    }
+                    vide = true;
+                    text.BackColor = Color.Red;
+                    MessageBox.Show("Erreur lors de la saisie");
                 }
                 else
                 {
-                    MessageBox.Show("Non");
+                    text.BackColor = Color.White;
                 }
             }
-            catch (MySqlException erreur)
+            if (vide == false)
             {
-                MessageBox.Show("Erreur " + erreur.ToString());
-            }
-            finally
-            {
-                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                try
                 {
-                    maConnexion.Close();
+                    string requete;
+                    maConnexion.Open();
+
+                    DialogResult retour;
+                    retour = MessageBox.Show("Ajouter un port ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (retour == DialogResult.Yes)
+                    {
+                        requete = "INSERT INTO tarifer(noperiode, lettrecategorie, notype, noliaison, tarif) VALUES (@NOPERIODE, @LETTRECATEGORIE, @NOTYPE, @NOLIAISON, @TARIF)";
+                        var monAjout = new MySqlCommand(requete, maConnexion);
+
+                        foreach (TextBox text in tbx)
+                        {
+                            champs = (text.Tag).ToString().Split(';');
+                            monAjout.Parameters.AddWithValue("@NOPERIODE", ((Periode)cmbPeriode.SelectedItem).GetNumero());
+                            monAjout.Parameters.AddWithValue("@LETTRECATEGORIE", champs[0]);
+                            monAjout.Parameters.AddWithValue("@NOTYPE", champs[1]);
+                            monAjout.Parameters.AddWithValue("@NOLIAISON", ((Liaison)cmbLiaison.SelectedItem).GetNumero());
+                            monAjout.Parameters.AddWithValue("@TARIF", text.Text);
+
+                            monAjout.ExecuteNonQuery();
+                            MessageBox.Show("Le tarif a été ajouté.");
+                            monAjout.Parameters.Clear();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Non");
+                    }
+                }
+                catch (MySqlException erreur)
+                {
+                    MessageBox.Show("Erreur " + erreur.ToString());
+                }
+                finally
+                {
+                    if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                    {
+                        maConnexion.Close();
+                    }
                 }
             }
         }

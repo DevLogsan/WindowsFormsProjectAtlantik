@@ -33,6 +33,8 @@ namespace WindowsFormsProjectAtlantik
             this.cmbNomPrenom = new System.Windows.Forms.ComboBox();
             this.lvInformation = new System.Windows.Forms.ListView();
             this.gbxReservation = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gbxReservation.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNomPrenom
@@ -65,6 +67,7 @@ namespace WindowsFormsProjectAtlantik
             // 
             // gbxReservation
             // 
+            this.gbxReservation.Controls.Add(this.label1);
             this.gbxReservation.Location = new System.Drawing.Point(221, 12);
             this.gbxReservation.Name = "gbxReservation";
             this.gbxReservation.Size = new System.Drawing.Size(260, 169);
@@ -72,6 +75,15 @@ namespace WindowsFormsProjectAtlantik
             this.gbxReservation.TabStop = false;
             this.gbxReservation.Text = "Réservation";
             this.gbxReservation.Enter += new System.EventHandler(this.gbxReservation_Enter);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(67, 151);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Réglé par carte bancaire";
             // 
             // FormAfficherReservation
             // 
@@ -85,6 +97,8 @@ namespace WindowsFormsProjectAtlantik
             this.Name = "FormAfficherReservation";
             this.Text = "FormAfficherReservation";
             this.Load += new System.EventHandler(this.FormAfficherReservation_Load);
+            this.gbxReservation.ResumeLayout(false);
+            this.gbxReservation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,5 +110,6 @@ namespace WindowsFormsProjectAtlantik
         private System.Windows.Forms.ComboBox cmbNomPrenom;
         private System.Windows.Forms.ListView lvInformation;
         private System.Windows.Forms.GroupBox gbxReservation;
+        private System.Windows.Forms.Label label1;
     }
 }
