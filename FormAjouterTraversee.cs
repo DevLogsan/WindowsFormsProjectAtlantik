@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsProjectAtlantik
 {
@@ -144,17 +145,26 @@ namespace WindowsFormsProjectAtlantik
                 string requete;
                 maConnexion.Open();
 
-                requete = "INSERT INTO traversee(noliaison, nobateau, dateheuredepart, dateheurearrivee) VALUES (@NOLIAISON, @NOBATEAU, @DATEHEUREDEPART, @DATEHEUREARRIVEE)";
-                var maTraversee = new MySqlCommand(requete, maConnexion);
+                DialogResult retour;
+                retour = MessageBox.Show("Ajouter un port ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (retour == DialogResult.Yes)
+                {
+                    requete = "INSERT INTO traversee(noliaison, nobateau, dateheuredepart, dateheurearrivee) VALUES (@NOLIAISON, @NOBATEAU, @DATEHEUREDEPART, @DATEHEUREARRIVEE)";
+                    var maTraversee = new MySqlCommand(requete, maConnexion);
 
-                maTraversee.Parameters.AddWithValue("@NOLIAISON", ((Liaison)cmbLiaison.SelectedItem).GetNumero());
-                maTraversee.Parameters.AddWithValue("@NOBATEAU", ((Bateau)cmbBateau.SelectedItem).GetNumero());
-                maTraversee.Parameters.AddWithValue("@DATEHEUREDEPART", dateDepart.Value.ToString("yyyy-MM-dd H:mm:ss"));
-                maTraversee.Parameters.AddWithValue("@DATEHEUREARRIVEE", dateArrivee.Value.ToString("yyyy-MM-dd H:mm:ss"));
-                maTraversee.ExecuteNonQuery();
+                    maTraversee.Parameters.AddWithValue("@NOLIAISON", ((Liaison)cmbLiaison.SelectedItem).GetNumero());
+                    maTraversee.Parameters.AddWithValue("@NOBATEAU", ((Bateau)cmbBateau.SelectedItem).GetNumero());
+                    maTraversee.Parameters.AddWithValue("@DATEHEUREDEPART", dateDepart.Value.ToString("yyyy-MM-dd H:mm:ss"));
+                    maTraversee.Parameters.AddWithValue("@DATEHEUREARRIVEE", dateArrivee.Value.ToString("yyyy-MM-dd H:mm:ss"));
+                    maTraversee.ExecuteNonQuery();
 
-                maTraversee.Parameters.Clear();
-
+                    MessageBox.Show("La traversée a été ajouté.");
+                    maTraversee.Parameters.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Non");
+                }
             }
             catch (MySqlException erreur)
             {

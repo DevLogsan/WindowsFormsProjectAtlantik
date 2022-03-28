@@ -134,7 +134,7 @@ namespace WindowsFormsProjectAtlantik
 
                             monAjout2.Parameters.Clear();
                         }
-                        MessageBox.Show("Le port : " + tbxNomBateau.Text + "a été ajouté.");
+                        MessageBox.Show("Le port : " + tbxNomBateau.Text + " a été ajouté.");
                         tbxNomBateau.Clear();
                     }
                     else

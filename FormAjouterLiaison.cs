@@ -28,38 +28,17 @@ namespace WindowsFormsProjectAtlantik
                 string requête;
                 maConnexion.Open();
 
-                var objetRegEx = new Regex("^[0-9]*$");
-                var résultatTest = objetRegEx.Match(tbxDistance.Text);
+                requête = "SELECT * FROM secteur";
 
-                if (!résultatTest.Success)
-                {
-                    tbxDistance.BackColor = Color.Red;
-                    MessageBox.Show("Erreur lors de la saisie");
-                }
-                else
-                {
-                    tbxDistance.BackColor = Color.White;
-                    DialogResult retour;
-                    retour = MessageBox.Show("Ajouter un secteur ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (retour == DialogResult.Yes)
-                    {
-                        requête = "SELECT * FROM secteur";
+                var maCommande = new MySqlCommand(requête, maConnexion);
+                MySqlDataReader jeuEnr = null;
+                jeuEnr = maCommande.ExecuteReader();
 
-                        var maCommande = new MySqlCommand(requête, maConnexion);
-                        MySqlDataReader jeuEnr = null;
-                        jeuEnr = maCommande.ExecuteReader();
-
-                        while (jeuEnr.Read())
-                        {
-                            Secteur monSecteur = new Secteur(jeuEnr.GetInt32("nosecteur"), jeuEnr.GetString("nom"));
-                            lbxSecteur.Items.Add(monSecteur);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Non");
-                    }
-                }
+                while (jeuEnr.Read())
+                   {
+                       Secteur monSecteur = new Secteur(jeuEnr.GetInt32("nosecteur"), jeuEnr.GetString("nom"));
+                       lbxSecteur.Items.Add(monSecteur);
+                   }
             }
             catch (MySqlException erreur)
             {
@@ -183,16 +162,38 @@ namespace WindowsFormsProjectAtlantik
                 string requete;
                 maConnexion.Open();
 
-                requete = "INSERT INTO liaison(nosecteur, noport_depart, noport_arrivee, distance) VALUES (@NOSECTEUR, @NOPORT_DEPART, @NOPORT_ARRIVEE, @DISTANCE)";
-                var monAjout = new MySqlCommand(requete, maConnexion);
+                var objetRegEx = new Regex("^[0-9.]*$");
+                var résultatTest = objetRegEx.Match(tbxDistance.Text);
 
-                monAjout.Parameters.AddWithValue("@NOSECTEUR", ((Secteur)lbxSecteur.SelectedItem).GetSecteur());
-                monAjout.Parameters.AddWithValue("@NOPORT_DEPART", ((Port)cmbDepart.SelectedItem).GetNumero());
-                monAjout.Parameters.AddWithValue("@NOPORT_ARRIVEE", ((Port)cmbArrivee.SelectedItem).GetNumero());
-                monAjout.Parameters.AddWithValue("@DISTANCE", tbxDistance.Text);
+                if (!résultatTest.Success)
+                {
+                    tbxDistance.BackColor = Color.Red;
+                    MessageBox.Show("Erreur lors de la saisie");
+                }
+                else
+                {
+                    tbxDistance.BackColor = Color.White;
+                    DialogResult retour;
+                    retour = MessageBox.Show("Ajouter une liaison ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (retour == DialogResult.Yes)
+                    {
+                        requete = "INSERT INTO liaison(nosecteur, noport_depart, noport_arrivee, distance) VALUES (@NOSECTEUR, @NOPORT_DEPART, @NOPORT_ARRIVEE, @DISTANCE)";
+                        var monAjout = new MySqlCommand(requete, maConnexion);
 
-                monAjout.ExecuteNonQuery();
-                tbxDistance.Clear();
+                        monAjout.Parameters.AddWithValue("@NOSECTEUR", ((Secteur)lbxSecteur.SelectedItem).GetSecteur());
+                        monAjout.Parameters.AddWithValue("@NOPORT_DEPART", ((Port)cmbDepart.SelectedItem).GetNumero());
+                        monAjout.Parameters.AddWithValue("@NOPORT_ARRIVEE", ((Port)cmbArrivee.SelectedItem).GetNumero());
+                        monAjout.Parameters.AddWithValue("@DISTANCE", tbxDistance.Text);
+
+                        monAjout.ExecuteNonQuery();
+                        MessageBox.Show("La liaison a été ajoutée.");
+                        tbxDistance.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Non");
+                    }
+                }
             }
             catch (MySqlException erreur)
             {

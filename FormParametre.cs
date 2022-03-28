@@ -67,8 +67,12 @@ namespace WindowsFormsProjectAtlantik
                 maConnexion.Open();
                 string requete;
 
-                requete = "UPDATE parametres SET site_pb = @SITE_PB, rang_pb = @RANG_PB, identifiant_pb = @IDENTIFIANT_PB, clehmac_pb = @CLEHMAC_PB, enproduction = @ENPRODUCTION, melsite = @MELSITE WHERE noidentifiant = 1";
-                var maModification = new MySqlCommand(requete, maConnexion);
+                DialogResult retour;
+                retour = MessageBox.Show("Ajouter un port ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (retour == DialogResult.Yes)
+                {
+                    requete = "UPDATE parametres SET site_pb = @SITE_PB, rang_pb = @RANG_PB, identifiant_pb = @IDENTIFIANT_PB, clehmac_pb = @CLEHMAC_PB, enproduction = @ENPRODUCTION, melsite = @MELSITE WHERE noidentifiant = 1";
+                    var maModification = new MySqlCommand(requete, maConnexion);
 
                     maModification.Parameters.AddWithValue("@SITE_PB", tbxSite.Text);
                     maModification.Parameters.AddWithValue("@RANG_PB", tbxRang.Text);
@@ -77,7 +81,12 @@ namespace WindowsFormsProjectAtlantik
                     maModification.Parameters.AddWithValue("@ENPRODUCTION", cbxProduction.Checked);
                     maModification.Parameters.AddWithValue("@MELSITE", tbxMailSite.Text);
                     maModification.ExecuteNonQuery();
-
+                    MessageBox.Show("Modification réussite");
+                }
+                else
+                {
+                    MessageBox.Show("Echec de la modification");
+                }
             }
             catch (MySqlException erreur)
             {

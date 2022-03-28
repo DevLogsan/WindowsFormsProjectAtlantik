@@ -63,7 +63,7 @@ namespace WindowsFormsProjectAtlantik
 
                         maCommande.Parameters.AddWithValue("@NOM", tbxAjouterPort.Text);
                         maCommande.ExecuteNonQuery();
-                        MessageBox.Show("Le port : " + tbxAjouterPort.Text + "a été ajouté.");
+                        MessageBox.Show("Le port : " + tbxAjouterPort.Text + " a été ajouté.");
                         tbxAjouterPort.Clear();
                     }
                     else

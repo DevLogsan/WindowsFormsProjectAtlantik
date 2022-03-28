@@ -164,21 +164,31 @@ namespace WindowsFormsProjectAtlantik
                 string requete;
                 maConnexion.Open();
 
-                requete = "INSERT INTO tarifer(noperiode, lettrecategorie, notype, noliaison, tarif) VALUES (@NOPERIODE, @LETTRECATEGORIE, @NOTYPE, @NOLIAISON, @TARIF)";
-                var monAjout = new MySqlCommand(requete, maConnexion);
-
-                var tbx = gbxGroupe.Controls.OfType<TextBox>(); //on recup tte les txb dans gbxGroup
-                foreach (TextBox text in tbx)
+                DialogResult retour;
+                retour = MessageBox.Show("Ajouter un port ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (retour == DialogResult.Yes)
                 {
-                    champs = (text.Tag).ToString().Split(';');
-                    monAjout.Parameters.AddWithValue("@NOPERIODE", ((Periode)cmbPeriode.SelectedItem).GetNumero());
-                    monAjout.Parameters.AddWithValue("@LETTRECATEGORIE", champs[0]);
-                    monAjout.Parameters.AddWithValue("@NOTYPE", champs[1]);
-                    monAjout.Parameters.AddWithValue("@NOLIAISON", ((Liaison)cmbLiaison.SelectedItem).GetNumero());
-                    monAjout.Parameters.AddWithValue("@TARIF", text.Text);
+                    requete = "INSERT INTO tarifer(noperiode, lettrecategorie, notype, noliaison, tarif) VALUES (@NOPERIODE, @LETTRECATEGORIE, @NOTYPE, @NOLIAISON, @TARIF)";
+                    var monAjout = new MySqlCommand(requete, maConnexion);
 
-                    monAjout.ExecuteNonQuery();
-                    monAjout.Parameters.Clear();
+                    var tbx = gbxGroupe.Controls.OfType<TextBox>(); //on recup tte les txb dans gbxGroup
+                    foreach (TextBox text in tbx)
+                    {
+                        champs = (text.Tag).ToString().Split(';');
+                        monAjout.Parameters.AddWithValue("@NOPERIODE", ((Periode)cmbPeriode.SelectedItem).GetNumero());
+                        monAjout.Parameters.AddWithValue("@LETTRECATEGORIE", champs[0]);
+                        monAjout.Parameters.AddWithValue("@NOTYPE", champs[1]);
+                        monAjout.Parameters.AddWithValue("@NOLIAISON", ((Liaison)cmbLiaison.SelectedItem).GetNumero());
+                        monAjout.Parameters.AddWithValue("@TARIF", text.Text);
+
+                        monAjout.ExecuteNonQuery();
+                        MessageBox.Show("Le tarif a été ajouté.");
+                        monAjout.Parameters.Clear();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Non");
                 }
             }
             catch (MySqlException erreur)

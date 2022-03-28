@@ -37,7 +37,7 @@ namespace WindowsFormsProjectAtlantik
                 string requête;
                 maConnexion.Open(); // on se connecte
 
-                var objetRegEx = new Regex("[^[a-zA-Zéèêëçàâôù ûïî]*$]");
+                var objetRegEx = new Regex("^[a-zA-Zéèêëçàâôù ûïî]*$");
                 var résultatTest = objetRegEx.Match(tbxAjouterSecteur.Text);
 
                 if (!résultatTest.Success)
@@ -57,7 +57,7 @@ namespace WindowsFormsProjectAtlantik
 
                             maCommande.Parameters.AddWithValue("@NOM", tbxAjouterSecteur.Text);
                             maCommande.ExecuteNonQuery();
-                            MessageBox.Show("Le secteur : " + tbxAjouterSecteur.Text + "a été ajouté.");
+                            MessageBox.Show("Le secteur : " + tbxAjouterSecteur.Text + " a été ajouté.");
                             tbxAjouterSecteur.Clear();
                     }
                     else

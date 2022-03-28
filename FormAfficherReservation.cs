@@ -110,7 +110,7 @@ namespace WindowsFormsProjectAtlantik
                 maConnexion.Open();
                 int i = 1;
 
-                requete = "SELECT r.montanttotal, libelle, quantite FROM type t, enregistrer e, reservation r WHERE t.lettrecategorie = e.lettrecategorie AND t.notype = e.notype AND r.noclient = @NOCLIENT AND e.noreservation = @NORESERVATION";
+                requete = "SELECT r.montanttotal, libelle, quantite FROM type t, enregistrer e, reservation r WHERE t.lettrecategorie = e.lettrecategorie AND t.notype = e.notype AND e.noreservation = @NORESERVATION";
                 var maCommande = new MySqlCommand(requete, maConnexion);
                 maCommande.Parameters.AddWithValue("@NORESERVATION", int.Parse(lvInformation.SelectedItems[0].Text));
 
