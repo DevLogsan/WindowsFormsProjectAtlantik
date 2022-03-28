@@ -37,7 +37,7 @@ namespace WindowsFormsProjectAtlantik
                 string requête;
                 maConnexion.Open(); // on se connecte
 
-                var objetRegEx = new Regex("[a-zA-Z]");
+                var objetRegEx = new Regex("[^[a-zA-Zéèêëçàâôù ûïî]*$]");
                 var résultatTest = objetRegEx.Match(tbxAjouterSecteur.Text);
 
                 if (!résultatTest.Success)
@@ -47,9 +47,10 @@ namespace WindowsFormsProjectAtlantik
                 }
                 else
                 {
+                    tbxAjouterSecteur.BackColor = Color.White;
                     DialogResult retour;
                     retour = MessageBox.Show("Ajouter un secteur ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if(retour == DialogResult.Yes)
+                    if (retour == DialogResult.Yes)
                     {
                             requête = "INSERT INTO secteur(nom) VALUES(@NOM)";
                             var maCommande = new MySqlCommand(requête, maConnexion);

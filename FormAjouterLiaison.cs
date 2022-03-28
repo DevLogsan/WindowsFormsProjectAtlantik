@@ -28,16 +28,37 @@ namespace WindowsFormsProjectAtlantik
                 string requête;
                 maConnexion.Open();
 
-                requête = "SELECT * FROM secteur";
+                var objetRegEx = new Regex("^[0-9]*$");
+                var résultatTest = objetRegEx.Match(tbxDistance.Text);
 
-                var maCommande = new MySqlCommand(requête, maConnexion);
-                MySqlDataReader jeuEnr = null;
-                jeuEnr = maCommande.ExecuteReader();
-
-                while (jeuEnr.Read())
+                if (!résultatTest.Success)
                 {
-                    Secteur monSecteur = new Secteur(jeuEnr.GetInt32("nosecteur"), jeuEnr.GetString("nom"));
-                    lbxSecteur.Items.Add(monSecteur);
+                    tbxDistance.BackColor = Color.Red;
+                    MessageBox.Show("Erreur lors de la saisie");
+                }
+                else
+                {
+                    tbxDistance.BackColor = Color.White;
+                    DialogResult retour;
+                    retour = MessageBox.Show("Ajouter un secteur ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (retour == DialogResult.Yes)
+                    {
+                        requête = "SELECT * FROM secteur";
+
+                        var maCommande = new MySqlCommand(requête, maConnexion);
+                        MySqlDataReader jeuEnr = null;
+                        jeuEnr = maCommande.ExecuteReader();
+
+                        while (jeuEnr.Read())
+                        {
+                            Secteur monSecteur = new Secteur(jeuEnr.GetInt32("nosecteur"), jeuEnr.GetString("nom"));
+                            lbxSecteur.Items.Add(monSecteur);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Non");
+                    }
                 }
             }
             catch (MySqlException erreur)

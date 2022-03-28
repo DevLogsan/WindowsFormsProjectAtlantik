@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsProjectAtlantik
 {
@@ -146,35 +147,54 @@ namespace WindowsFormsProjectAtlantik
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            try
+            var vide = false;
+            var tbx = gbxGroupe.Controls.OfType<TextBox>(); //on recup tte les txb dans gbxGroup
+            foreach (TextBox text in tbx)
             {
-                maConnexion.Open();
-
-                string requete;
-
-                requete = "UPDATE contenir SET capacitemax = @CAPACITEMAX WHERE nobateau = @NOBATEAU AND lettrecategorie = @LETTRECATEGORIE";
-                var monAjout = new MySqlCommand(requete, maConnexion);
-
-                var tbx = gbxGroupe.Controls.OfType<TextBox>(); //on recup tte les txb dans gbxGroup
-                foreach (TextBox text in tbx)
+                var objetRegEx = new Regex("^[0-9]*$");
+                var résultatTest = objetRegEx.Match(text.Text);
+                if (!résultatTest.Success)
                 {
-                    monAjout.Parameters.AddWithValue("@CAPACITEMAX", text.Text);
-                    monAjout.Parameters.AddWithValue("@NOBATEAU", ((Bateau)cmbNomBateau.SelectedItem).GetNumero());
-                    monAjout.Parameters.AddWithValue("@LETTRECATEGORIE", text.Tag);
-                    monAjout.ExecuteNonQuery();
-
-                    monAjout.Parameters.Clear();
+                    vide = true;
+                    text.BackColor = Color.Red;
+                    MessageBox.Show("Erreur lors de la saisie");
+                }
+                else
+                {
+                    text.BackColor = Color.White;
                 }
             }
-            catch (MySqlException erreur)
+            if (vide == false)
             {
-                MessageBox.Show("Erreur " + erreur.ToString());
-            }
-            finally
-            {
-                if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                try
                 {
-                    maConnexion.Close();
+                    maConnexion.Open();
+
+                    string requete;
+
+                    requete = "UPDATE contenir SET capacitemax = @CAPACITEMAX WHERE nobateau = @NOBATEAU AND lettrecategorie = @LETTRECATEGORIE";
+                    var monAjout = new MySqlCommand(requete, maConnexion);
+
+                    foreach (TextBox text in tbx)
+                    {
+                        monAjout.Parameters.AddWithValue("@CAPACITEMAX", text.Text);
+                        monAjout.Parameters.AddWithValue("@NOBATEAU", ((Bateau)cmbNomBateau.SelectedItem).GetNumero());
+                        monAjout.Parameters.AddWithValue("@LETTRECATEGORIE", text.Tag);
+                        monAjout.ExecuteNonQuery();
+
+                        monAjout.Parameters.Clear();
+                    }
+                }
+                catch (MySqlException erreur)
+                {
+                    MessageBox.Show("Erreur " + erreur.ToString());
+                }
+                finally
+                {
+                    if (maConnexion is object & maConnexion.State == ConnectionState.Open)
+                    {
+                        maConnexion.Close();
+                    }
                 }
             }
         }

@@ -97,6 +97,10 @@ namespace WindowsFormsProjectAtlantik
                     text.BackColor = Color.Red;
                     MessageBox.Show("Erreur lors de la saisie");
                 }
+                else
+                {
+                    text.BackColor = Color.White;
+                }
             }
             if(vide == false)
             {

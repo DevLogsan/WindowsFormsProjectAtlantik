@@ -44,7 +44,7 @@ namespace WindowsFormsProjectAtlantik
                 string requête;
                 maConnexion.Open(); // on se connecte
 
-                var objetRegEx = new Regex("[a-zA-Z]");
+                var objetRegEx = new Regex("^[a-zA-Zéèêëçàâôù ûïî]*$");
                 var résultatTest = objetRegEx.Match(tbxAjouterPort.Text);
 
                 if (!résultatTest.Success)
