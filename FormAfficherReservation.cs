@@ -19,7 +19,6 @@ namespace WindowsFormsProjectAtlantik
             InitializeComponent();
             maConnexion = new MySqlConnection("server=localhost;user=root;database=atlantik2022;port=3306;password=");
         }
-
         private void FormAfficherReservation_Load(object sender, EventArgs e)
         {
             try
