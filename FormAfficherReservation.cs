@@ -103,7 +103,6 @@ namespace WindowsFormsProjectAtlantik
 
         private void lvInformation_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             try
             {
                 string requete;
@@ -120,7 +119,8 @@ namespace WindowsFormsProjectAtlantik
                     Reservation monType = new Reservation(jeuEnr["libelle"].ToString(), int.Parse(jeuEnr["quantite"].ToString()));
                     Label lbl = new Label();
                     lbl.Text = monType.ToString();
-                    lbl.Location = new Point(5, i * 25);
+                    lbl.Size = new Size(150, 32);
+                    lbl.Location = new Point(5, i * 30);
 
                     gbxReservation.Controls.Add(lbl);
                     i++;

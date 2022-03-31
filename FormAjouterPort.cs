@@ -82,7 +82,6 @@ namespace WindowsFormsProjectAtlantik
                 {
                     maConnexion.Close();
                 }
-
             }
         }
     }
