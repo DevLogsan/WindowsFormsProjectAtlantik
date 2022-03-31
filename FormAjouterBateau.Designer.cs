@@ -29,6 +29,7 @@ namespace WindowsFormsProjectAtlantik
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAjouterBateau));
             this.lblNomBateau = new System.Windows.Forms.Label();
             this.tbxNomBateau = new System.Windows.Forms.TextBox();
             this.btnAjouter = new System.Windows.Forms.Button();
@@ -160,6 +161,10 @@ namespace WindowsFormsProjectAtlantik
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.tbxNomBateau);
             this.Controls.Add(this.lblNomBateau);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAjouterBateau";
             this.Text = "Ajouter un bateau";
             this.Load += new System.EventHandler(this.FormAjouterBateau_Load);

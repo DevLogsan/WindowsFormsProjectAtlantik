@@ -29,6 +29,7 @@ namespace WindowsFormsProjectAtlantik
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAjouterPort));
             this.lblNomPort = new System.Windows.Forms.Label();
             this.tbxAjouterPort = new System.Windows.Forms.TextBox();
             this.btnAjouterPort = new System.Windows.Forms.Button();
@@ -70,6 +71,10 @@ namespace WindowsFormsProjectAtlantik
             this.Controls.Add(this.btnAjouterPort);
             this.Controls.Add(this.tbxAjouterPort);
             this.Controls.Add(this.lblNomPort);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAjouterPort";
             this.Text = "FormAjouterPort";
             this.Load += new System.EventHandler(this.FormAjouterPort_Load);

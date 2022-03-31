@@ -29,6 +29,7 @@ namespace WindowsFormsProjectAtlantik
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAjouterSecteur));
             this.tbxAjouterSecteur = new System.Windows.Forms.TextBox();
             this.lblNomSecteur = new System.Windows.Forms.Label();
             this.btnAjouterSecteur = new System.Windows.Forms.Button();
@@ -70,6 +71,10 @@ namespace WindowsFormsProjectAtlantik
             this.Controls.Add(this.btnAjouterSecteur);
             this.Controls.Add(this.lblNomSecteur);
             this.Controls.Add(this.tbxAjouterSecteur);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAjouterSecteur";
             this.Text = "Ajouter un secteur";
             this.Load += new System.EventHandler(this.FormAjouterSecteur_Load);

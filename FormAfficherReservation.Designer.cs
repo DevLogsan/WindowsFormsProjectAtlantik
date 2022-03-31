@@ -29,6 +29,7 @@ namespace WindowsFormsProjectAtlantik
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAfficherReservation));
             this.cmbNomPrenom = new System.Windows.Forms.ComboBox();
             this.lvInformation = new System.Windows.Forms.ListView();
             this.gbxReservation = new System.Windows.Forms.GroupBox();
@@ -89,11 +90,16 @@ namespace WindowsFormsProjectAtlantik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(493, 277);
             this.Controls.Add(this.gbxReservation);
             this.Controls.Add(this.lvInformation);
             this.Controls.Add(this.cmbNomPrenom);
             this.Controls.Add(this.lblNomPrenom);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAfficherReservation";
             this.Text = "FormAfficherReservation";
             this.Load += new System.EventHandler(this.FormAfficherReservation_Load);

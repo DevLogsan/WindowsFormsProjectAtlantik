@@ -30,6 +30,7 @@ namespace WindowsFormsProjectAtlantik
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAccueil));
             this.msAccueil = new System.Windows.Forms.MenuStrip();
             this.mmAjout = new System.Windows.Forms.ToolStripMenuItem();
             this.miAjouterSecteur = new System.Windows.Forms.ToolStripMenuItem();
@@ -234,8 +235,12 @@ namespace WindowsFormsProjectAtlantik
             this.Controls.Add(this.msAccueil);
             this.Font = new System.Drawing.Font("MV Boli", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.msAccueil;
             this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAccueil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accueil";

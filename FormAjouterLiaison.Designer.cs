@@ -29,6 +29,7 @@ namespace WindowsFormsProjectAtlantik
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAjouterLiaison));
             this.lbxSecteur = new System.Windows.Forms.ListBox();
             this.lblSecteur = new System.Windows.Forms.Label();
             this.lblDepart = new System.Windows.Forms.Label();
@@ -139,6 +140,10 @@ namespace WindowsFormsProjectAtlantik
             this.Controls.Add(this.lblDepart);
             this.Controls.Add(this.lblSecteur);
             this.Controls.Add(this.lbxSecteur);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAjouterLiaison";
             this.Text = "FormAjouterLiaison";
             this.Load += new System.EventHandler(this.FormAjouterLiaison_Load);
